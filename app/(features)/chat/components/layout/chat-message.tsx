@@ -1,9 +1,13 @@
 import { Divider, Heading, Text, VStack } from "@chakra-ui/react";
-import { fetchUsers } from "../../api/data";
+import { fetchMessages, fetchUsers } from "../../api/data";
 
 export function ChatMessage() {
+  // TODO: モックAPIからデータを取得し、仮の会話画面を作成
+  // TODO: 画面内の各ボタンのイベント時画面作成
   const users = fetchUsers();
   console.log(users);
+
+  const messages = fetchMessages();
 
   return (
     <>
