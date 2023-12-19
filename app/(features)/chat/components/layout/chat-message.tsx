@@ -1,6 +1,10 @@
 import { Divider, Heading, Text, VStack } from "@chakra-ui/react";
+import { fetchUsers } from "../../api/data";
 
 export function ChatMessage() {
+  const users = fetchUsers();
+  console.log(users);
+
   return (
     <>
       <VStack p={1}>

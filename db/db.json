@@ -1,0 +1,187 @@
+{
+  "messages": [
+    {
+      "message_id": 1,
+      "channel_id": 1,
+      "user_id": 1,
+      "text": "皆さん、新しいプロジェクトの提案を持ってきました。AIを用いた新しいウェブアプリケーションの開発です。興味がある方は参加してください！",
+      "timestamp": "2023-08-01T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 2,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "興味あります！具体的にはどんなアプリケーションを考えていますか？",
+      "timestamp": "2023-08-01T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 3,
+      "channel_id": 1,
+      "user_id": 1,
+      "text": "顧客の購買履歴や検索履歴を基に、AIが次に購入する商品を予測するアプリケーションです。",
+      "timestamp": "2023-08-01T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 4,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "それは面白そうですね。データの取得はどのように行う予定ですか？",
+      "timestamp": "2023-08-01T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 5,
+      "channel_id": 1,
+      "user_id": 1,
+      "text": "既存のECサイトとのAPI連携を考えています。",
+      "timestamp": "2023-08-01T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 6,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "皆さん、先日のアプリの開発に関して、フレームワークの選定を始めたいと思います。候補としては、DjangoやFlask、FastAPIなどが考えられますが、意見を聞かせてください。",
+      "timestamp": "2023-08-10T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 7,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "個人的にはFastAPIの方が開発速度が速く、非同期処理も得意なのでおすすめです。",
+      "timestamp": "2023-08-10T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 8,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "私もFastAPIに一票です。最近のトレンドも考慮すると、このフレームワークが良いと思います。",
+      "timestamp": "2023-08-10T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 9,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "了解しました。FastAPIでの開発を進めていきましょう。",
+      "timestamp": "2023-08-10T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 10,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "アプリのデザインに関して、フロントエンドのライブラリやフレームワークの選定を行いたいと思います。ReactやVue、Angularなどが考えられますが、どれが良いと思いますか？",
+      "timestamp": "2023-08-20T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 11,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "UIの動的な変更が多いのであればReactが良いと思います。",
+      "timestamp": "2023-08-20T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 12,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "私もReactが使いやすいと感じます。公式のドキュメントも充実しているので、サポートも受けやすいと思います。",
+      "timestamp": "2023-08-20T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 13,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "それでは、Reactを使用して進めていきますね。",
+      "timestamp": "2023-08-20T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 14,
+      "channel_id": 1,
+      "user_id": 1,
+      "text": "皆さん、今月の進捗はどうでしょうか？",
+      "timestamp": "2023-08-31T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 15,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "FastAPIでのバックエンドの基盤はほぼ完成しました。あとは、フロントエンドとの連携を強化する必要があります。",
+      "timestamp": "2023-08-31T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 16,
+      "channel_id": 1,
+      "user_id": 2,
+      "text": "Reactの部分も大体の機能は実装できました。ただ、いくつかのバグがあるので、それを修正する必要があります。",
+      "timestamp": "2023-08-31T09:00:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 17,
+      "channel_id": 1,
+      "user_id": 1,
+      "text": "了解しました。来月も引き続き頑張っていきましょう！",
+      "timestamp": "2023-08-31T09:00:00",
+      "message_type": "text"
+    }
+  ],
+  "users": [
+    {
+      "user_id": 1,
+      "username": "佐藤",
+      "email": "佐藤@example.com",
+      "password_hash": "hashed_password",
+      "last_login": "2023-08-31T09:00:00",
+      "status": "active",
+      "profile_picture": "https://example.com/profiles/sato.jpg"
+    },
+    {
+      "user_id": 2,
+      "username": "田中",
+      "email": "田中@example.com",
+      "password_hash": "hashed_password",
+      "last_login": "2023-08-31T09:00:00",
+      "status": "active",
+      "profile_picture": "https://example.com/profiles/tanaka.jpg"
+    },
+    {
+      "user_id": 3,
+      "username": "山田",
+      "email": "山田@example.com",
+      "password_hash": "hashed_password",
+      "last_login": "2023-08-31T09:00:00",
+      "status": "active",
+      "profile_picture": "https://example.com/profiles/yamada.jpg"
+    },
+    {
+      "user_id": 4,
+      "username": "鈴木",
+      "email": "鈴木@example.com",
+      "password_hash": "hashed_password",
+      "last_login": "2023-08-31T09:00:00",
+      "status": "active",
+      "profile_picture": "https://example.com/profiles/suzuki.jpg"
+    },
+    {
+      "user_id": 5,
+      "username": "中村",
+      "email": "中村@example.com",
+      "password_hash": "hashed_password",
+      "last_login": "2023-08-31T09:00:00",
+      "status": "active",
+      "profile_picture": "https://example.com/profiles/nakamura.jpg"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const instance = axios.create({
-  baseURL: "https://some-domain.com/api/",
+export const jsonServerInstance = axios.create({
+  baseURL: "http://localhost:3333",
   timeout: 1000,
   headers: { "X-Custom-Header": "foobar" },
 });

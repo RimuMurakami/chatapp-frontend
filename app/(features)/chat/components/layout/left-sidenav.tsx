@@ -13,6 +13,7 @@ export function LeftSideNav() {
         </HStack>
       </HStack>
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
+        {/* TODO: Mockデータ作成後map処理 */}
         <VStack align={"start"} p={1} gap={4} isTruncated maxW={"250px"}>
           <HStack gap={3}>
             <Avatar size={"sm"} />
