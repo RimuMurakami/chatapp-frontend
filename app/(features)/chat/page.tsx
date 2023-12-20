@@ -18,7 +18,7 @@ export default function Page() {
         gridTemplateColumns={"260px 1fr 280px"}
         h="100dvh"
         color="blackAlpha.700"
-        fontWeight="bold"
+        // fontWeight="bold"
       >
         <GridItem bg="blue.800" area={"header"}>
           <Header />

@@ -1,13 +1,18 @@
 import { Divider, Heading, Text, VStack } from "@chakra-ui/react";
-import { fetchMessages, fetchUsers } from "../../api/data";
+import { fetchUsers, fetchMessages } from "../../api/data";
+
+
 
 export function ChatMessage() {
   // TODO: モックAPIからデータを取得し、仮の会話画面を作成
   // TODO: 画面内の各ボタンのイベント時画面作成
-  const users = fetchUsers();
-  console.log(users);
+  const users = fetchMessages();
 
-  const messages = fetchMessages();
+
+  
+  // if (users.data && Array.isArray(users.data)) {
+  //   users.data.map(user => console.log(user));
+  // }
 
   return (
     <>
@@ -19,17 +24,16 @@ export function ChatMessage() {
           justifyContent={"center"}
           w={"100%"}
           h={"12"}
-          size={"lg"}
+          size={"md"}
           bgColor={"white"}
           borderBottom={"1px solid"}
           borderColor={"gray.400"}
         >
-          Bobとのチャンネル
+          新規開発プロジェクトについて
         </Heading>
-        <Text>chat message here!</Text>
-        <Text>chat message here!</Text>
-        <Text>chat message here!</Text>
-        <Text>chat message here!</Text>
+        <VStack>
+  {users.data && Array.isArray(users.data) && users.data.map(user => `<Text>${user.text}</Text>`)}
+</VStack>
       </VStack>
     </>
   );

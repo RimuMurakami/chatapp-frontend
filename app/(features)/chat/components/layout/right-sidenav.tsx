@@ -6,7 +6,7 @@ export function RightSideNav() {
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"}>
       <Box h={"40dvh"}>
-        <HStack h={"12"} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
+        <HStack p={1} h={"12"} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
           <Text>概要</Text>
           <LuPencilLine size="24px" />
         </HStack>
@@ -15,7 +15,7 @@ export function RightSideNav() {
         </Box>
       </Box>
       <Box>
-        <HStack p={2} pb={4} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
+        <HStack p={1} h={12} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
           <Text>タスク</Text>
           <LuPlus size="24px" />
         </HStack>

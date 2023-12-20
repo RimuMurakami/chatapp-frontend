@@ -40,7 +40,7 @@ export function LeftSideNav() {
             <Text>チャンネル名</Text>
           </HStack>
         </VStack>
-        <Button display={"flex"} alignSelf={"center"} mb={3} colorScheme={"blue"} variant={"outline"}>
+        <Button display={"flex"} alignSelf={"center"} my={3} colorScheme={"blue"} variant={"outline"}>
           新しいチャンネルを追加
         </Button>
       </VStack>

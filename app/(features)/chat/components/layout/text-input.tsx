@@ -2,7 +2,7 @@ import { AiOutlineSmile } from "react-icons/ai";
 import { CiFileOn, CiVideoOn } from "react-icons/ci";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { BsSend } from "react-icons/bs";
-import { Box, Divider, Flex, Grid, GridItem, HStack, Textarea } from "@chakra-ui/react";
+import { Box, Divider, Flex, Grid, GridItem, HStack, Spacer, Textarea } from "@chakra-ui/react";
 
 export function TextInput() {
   return (
@@ -26,13 +26,13 @@ export function TextInput() {
             <AiOutlineSmile size={"32px"} />
             <CiFileOn size={"32px"} />
             <CiVideoOn size={"32px"} />
-            <Divider />
-            <Box w={"10rem"} fontWeight={"normal"} fontSize={"sm"}>
-              <label>
-                <input type="checkbox" name="" id="" />
+            <Spacer/>
+            <Flex pr={1} gap={1} fontWeight={"normal"} fontSize={"sm"}>
+              <input type="checkbox" name="enterCheckBox" id="enterCheckBox" />
+              <label htmlFor="enterCheckBox">
                 Enterで送信
               </label>
-            </Box>
+            </Flex>
             <BsSend size={"28px"} />
           </HStack>
         </GridItem>

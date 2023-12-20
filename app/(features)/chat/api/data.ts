@@ -1,18 +1,24 @@
+import useSWR from 'swr';
+
 import { jsonServerInstance } from "./axios";
+import { Divider } from '@chakra-ui/react';
 
 const axios = jsonServerInstance;
 
-export async function fetchUsers() {
-  // TODO: axiosの使い方確認
-  try {
-    const data = await axios.get("/users");
-    return data;
-  } catch (error) {}
+const fetcher = url => axios.get(url).then(res => res.data);
+
+export function fetchUsers() {
+  const { data, error} = useSWR('/users', fetcher);
+
+  if (error) return { error };
+  if (!data) return {loading: true};
+  return { data };
 }
 
-export async function fetchMessages() {
-  try {
-    const data = await axios.get("/messages");
-    return data;
-  } catch (error) {}
+export function fetchMessages() {
+  const { data, error} = useSWR('/messages', fetcher);
+
+  if (error) return { error };
+  if (!data) return {loading: true};
+  return { data };
 }
