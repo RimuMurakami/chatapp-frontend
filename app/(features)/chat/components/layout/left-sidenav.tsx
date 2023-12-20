@@ -17,7 +17,7 @@ export function LeftSideNav() {
         <VStack align={"start"} p={1} gap={4} isTruncated maxW={"250px"}>
           <HStack gap={3}>
             <Avatar size={"sm"} />
-            <Text>チャンネル名だよ</Text>
+            <Text>新規開発プロジェクトについて</Text>
           </HStack>
           <HStack gap={3}>
             <Avatar size={"sm"} />
