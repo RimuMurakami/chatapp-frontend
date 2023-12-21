@@ -7,18 +7,19 @@ export function Header() {
     <>
       <Box color={"white"}>
         <HStack justify={"space-between"}>
+          {/* Desktop */}
           <HStack>
             <Text textAlign={"center"} fontSize={"x-large"} w={"260px"}>
               Chat App
             </Text>
-            <HStack>
+            <HStack display={{ base: "none", md: "Flex" }}>
               <MdOutlineSearch size="30px" />
-              <Input h={"30px"} w={"30rem"} placeholder="チャット名、メッセージ内容を検索" />
+              <Input h={"30px"} w={"300px"} placeholder="チャット名、メッセージ内容を検索" />
             </HStack>
           </HStack>
           <HStack mr={"2"}>
             <Avatar name="Rechard Meatball" src="" size={"sm"} />
-            <Text>Richard Meatball</Text>
+            <Text display={{ base: "none", lg: "Flex" }}>Richard Meatball</Text>
             <IoSettingsOutline size="30px" />
           </HStack>
         </HStack>
