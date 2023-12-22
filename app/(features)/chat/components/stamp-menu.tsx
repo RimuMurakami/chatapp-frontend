@@ -19,8 +19,8 @@ import sampleStamp from "../assets/sample-stamp.png";
 import Image from "next/image";
 
 export function StampMenu() {
-  const stamps = new Array(17).fill(null).map(() => (
-    <Button colorScheme="blue" aspectRatio={1 / 1} h={"100px"}>
+  const stamps = new Array(17).fill(null).map((_,i) => (
+    <Button key={i} colorScheme="blue" aspectRatio={1 / 1} h={"100px"}>
       画像
     </Button>
   ));
