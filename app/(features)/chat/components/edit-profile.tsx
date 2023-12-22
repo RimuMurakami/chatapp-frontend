@@ -20,7 +20,7 @@ export function EditProfile() {
   return (
     <>
       {/* <Button>Open Modal</Button> */}
-      <Button p={0} bgColor={"transparent"} onClick={onOpen}>
+      <Button p={0} bgColor={"transparent"} onClick={onOpen} color={"white"} fontWeight={"normal"} _hover={{bgColor: "gray"}}>
         <HStack mr={"2"}>
           <Avatar name="Rechard Meatball" src="" size={"sm"} />
           <Text display={{ base: "none", lg: "Flex" }}>Richard Meatball</Text>
