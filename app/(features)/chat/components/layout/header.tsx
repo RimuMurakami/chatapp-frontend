@@ -1,6 +1,6 @@
-import { Avatar, Box, HStack, Input, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, HStack, Input, Text } from "@chakra-ui/react";
 import { MdOutlineSearch } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
+import { EditProfile } from "../edit-profile";
 
 export function Header() {
   return (
@@ -17,11 +17,7 @@ export function Header() {
               <Input h={"30px"} w={"300px"} placeholder="チャット名、メッセージ内容を検索" />
             </HStack>
           </HStack>
-          <HStack mr={"2"}>
-            <Avatar name="Rechard Meatball" src="" size={"sm"} />
-            <Text display={{ base: "none", lg: "Flex" }}>Richard Meatball</Text>
-            <IoSettingsOutline size="30px" />
-          </HStack>
+          <EditProfile />
         </HStack>
       </Box>
     </>

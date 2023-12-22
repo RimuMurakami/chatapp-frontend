@@ -76,7 +76,7 @@ export function TextInput() {
             <Flex pr={1} gap={1} fontWeight={"normal"} fontSize={"sm"}>
               <Checkbox onChange={(e) => setIsEnterToSend(e.target.checked)}>Enterで送信</Checkbox>
             </Flex>
-            <Button color={"gray"} onClick={sendMessage} p={0} bgColor={"blue.100"}>
+            <Button color={"gray"} onClick={sendMessage} p={0} bgColor={"transparent"} _hover={{ bgColor: "blue.100" }}>
               <BsSend size={"28px"} />
             </Button>
           </HStack>
