@@ -16,9 +16,9 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useDispatchMessages } from "../../contexts/message-context";
-import { StampMenu } from "../stamp-menu";
-import { FileInput } from "../file-input";
+import { useDispatchMessages } from "../contexts/message-context";
+import { StampMenu } from "./text-input/stamp-menu";
+import { FileInput } from "./text-input/file-input";
 
 export function TextInput() {
   const [isEnterToSend, setIsEnterToSend] = useState(false);

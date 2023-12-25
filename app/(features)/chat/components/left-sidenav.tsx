@@ -1,8 +1,8 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Avatar, Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
-import { CreateChannel } from "../create-channel/create-channel";
-import { useChannels } from "../../contexts/channel-context";
+import { CreateChannel } from "./create-channel/create-channel";
+import { useChannels } from "../contexts/channel-context";
 
 export function LeftSideNav() {
   const channels = useChannels();

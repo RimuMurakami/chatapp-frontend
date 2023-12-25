@@ -1,11 +1,11 @@
 "use client";
 import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 
-import { Header } from "./components/layout/header";
-import { LeftSideNav } from "./components/layout/left-sidenav";
-import { RightSideNav } from "./components/layout/right-sidenav";
-import { TextInput } from "./components/layout/text-input";
-import { ChatMessage } from "./components/layout/chat-message";
+import { Header } from "./components/header";
+import { LeftSideNav } from "./components/left-sidenav";
+import { RightSideNav } from "./components/right-sidenav";
+import { TextInput } from "./components/text-input";
+import { ChatMessage } from "./components/chat-message";
 
 export default function Page() {
   const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });

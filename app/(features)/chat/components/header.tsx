@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, HStack, Input, Text } from "@chakra-ui/react";
 import { MdOutlineSearch } from "react-icons/md";
-import { EditProfile } from "../edit-profile";
+import { EditProfile } from "./header/edit-profile";
 
 export function Header() {
   return (

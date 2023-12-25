@@ -1,6 +1,6 @@
 import { Box, Divider, Heading, Text, VStack } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
-import { useMessages, useDispatchMessages } from "../../contexts/message-context";
+import { useMessages, useDispatchMessages } from "../contexts/message-context";
 import Image from "next/image";
 
 export function ChatMessage() {

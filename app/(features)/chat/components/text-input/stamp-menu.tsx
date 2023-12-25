@@ -1,8 +1,8 @@
 import { AiOutlineSmile } from "react-icons/ai";
 
-import sampleStamp from "../assets/sample-stamp.png";
+import sampleStamp from "../../assets/sample-stamp.png";
 import Image from "next/image";
-import { useDispatchMessages } from "../contexts/message-context";
+import { useDispatchMessages } from "../../contexts/message-context";
 import {
   Popover,
   PopoverTrigger,
