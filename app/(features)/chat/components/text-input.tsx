@@ -14,13 +14,19 @@ import {
   Input,
   Spacer,
   Textarea,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatchMessages } from "../contexts/message-context";
 import { StampMenu } from "./text-input/stamp-menu";
 import { FileInput } from "./text-input/file-input";
 
-export function TextInput() {
+export function TextInput({
+  setIsLeftSideNavVisible,
+  isLeftSideNavVisible,
+  isRightSideNavVisible,
+  setIsRightSideNavVisible,
+}) {
   const [isEnterToSend, setIsEnterToSend] = useState(false);
 
   const dispatch = useDispatchMessages();
@@ -47,25 +53,39 @@ export function TextInput() {
     setEnteredMessage("");
   }
 
+  const templateColumns = useBreakpointValue({
+    base: "0px 1fr 0px",
+    md: `20px 1fr 0px`,
+    lg: "20px 1fr 20px",
+  });
+
   return (
     <>
       <Grid
         templateAreas={`"leftArrow top rightArrow "
                   "leftArrow textInput rightArrow"`}
         gridTemplateRows={"40px 1fr"}
-        gridTemplateColumns={"20px 1fr 20px"}
+        // gridTemplateColumns={"20px 1fr 20px"}
+        gridTemplateColumns={templateColumns}
         h="100%"
         color="blackAlpha.700"
         fontWeight="bold"
+        borderTop={"1px solid"}
+        borderColor={"gray.400"}
       >
         {/* left arrow */}
         <GridItem bg="gray.50" area={"leftArrow"}>
-          <Flex h={"100%"} align={"center"}>
-            <MdKeyboardDoubleArrowLeft />
+          <Flex
+            h={"100%"}
+            align={"center"}
+            _hover={{ bgColor: "blue.50" }}
+            onClick={() => setIsLeftSideNavVisible((prev) => !prev)}
+          >
+            {isLeftSideNavVisible ? <MdKeyboardDoubleArrowLeft /> : <MdKeyboardDoubleArrowRight />}
           </Flex>
         </GridItem>
         {/* nav buttons */}
-        <GridItem bg="gray.50" area={"top"} borderTop={"1px solid"} borderColor={"gray.400"}>
+        <GridItem bg="gray.50" area={"top"}>
           <HStack h={"100%"} align={"center"}>
             <HStack gap={3}>
               <StampMenu />
@@ -83,8 +103,13 @@ export function TextInput() {
         </GridItem>
         {/* right arrow */}
         <GridItem bg="gray.50" area={"rightArrow"}>
-          <Flex h={"100%"} align={"center"}>
-            <MdKeyboardDoubleArrowRight />
+          <Flex
+            h={"100%"}
+            align={"center"}
+            _hover={{ bgColor: "blue.50" }}
+            onClick={() => setIsRightSideNavVisible((prev) => !prev)}
+          >
+            {isRightSideNavVisible ? <MdKeyboardDoubleArrowRight /> : <MdKeyboardDoubleArrowLeft />}
           </Flex>
         </GridItem>
         {/* input message */}

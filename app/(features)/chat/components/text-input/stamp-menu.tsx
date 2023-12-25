@@ -42,7 +42,13 @@ export function StampMenu() {
   return (
     <Popover isOpen={isOpen} onOpen={onOpen} onClose={onClose} placement="top-end">
       <PopoverTrigger>
-        <Button onClick={onOpen} color={"blackAlpha.700"} p={0}>
+        <Button
+          onClick={onOpen}
+          color={"blackAlpha.700"}
+          p={0}
+          bgColor={"transparent"}
+          _hover={{ bgColor: "blue.100" }}
+        >
           <AiOutlineSmile size={"28px"} />
         </Button>
       </PopoverTrigger>

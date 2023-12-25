@@ -6,8 +6,11 @@ import { Header } from "./header";
 import { LeftSideNav } from "./left-sidenav";
 import { RightSideNav } from "./right-sidenav";
 import { TextInput } from "./text-input";
+import { useState } from "react";
 
 export default function ChatGrid({ children }) {
+  const [isLeftSideNavVisible, setIsLeftSideNavVisible] = useState(true);
+  const [isRightSideNavVisible, setIsRightSideNavVisible] = useState(true);
   const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });
   const displayLeftSideNavValue = useBreakpointValue({ base: "none", md: "block" });
   const templateAreas = useBreakpointValue({
@@ -24,8 +27,8 @@ export default function ChatGrid({ children }) {
 
   const templateColumns = useBreakpointValue({
     base: "1fr",
-    md: "260px 1fr",
-    lg: "260px 1fr 280px",
+    md: `${isLeftSideNavVisible ? "260px" : "0px"} 1fr`,
+    lg: `${isLeftSideNavVisible ? "260px" : "0px"} 1fr ${isRightSideNavVisible ? "280px" : "0px"}`,
   });
 
   return (
@@ -43,16 +46,21 @@ export default function ChatGrid({ children }) {
           <Header />
         </GridItem>
         <GridItem bg="gray.100" area={"leftSideNav"} display={displayLeftSideNavValue}>
-          <LeftSideNav />
+          {isLeftSideNavVisible && <LeftSideNav />}
         </GridItem>
         <GridItem bg="gray.50" area={"chat-message"}>
           {children}
         </GridItem>
         <GridItem bg="gray.100" area={"rightSideNav"} display={displayRightSideNavValue}>
-          <RightSideNav />
+          {isRightSideNavVisible && <RightSideNav />}
         </GridItem>
         <GridItem bg="white" area={"textInput"}>
-          <TextInput />
+          <TextInput
+            setIsLeftSideNavVisible={setIsLeftSideNavVisible}
+            isLeftSideNavVisible={isLeftSideNavVisible}
+            isRightSideNavVisible={isRightSideNavVisible}
+            setIsRightSideNavVisible={setIsRightSideNavVisible}
+          />
         </GridItem>
       </Grid>
     </>

@@ -1,9 +1,9 @@
 import { IoHomeOutline } from "react-icons/io5";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { Avatar, Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import { CreateChannel } from "./left-sidenav/create-channel";
 import { useChannels } from "../contexts/channel-context";
 import { Link } from "@chakra-ui/next-js";
+import { ChannelMenuList } from "./left-sidenav/channel-menu-list";
 
 export function LeftSideNav() {
   const channels = useChannels();
@@ -13,10 +13,7 @@ export function LeftSideNav() {
       {/* nav title */}
       <HStack px={1} h={12} borderBottom={"1px solid"} borderColor={"gray.400"}>
         <IoHomeOutline size="32px" />
-        <HStack pl={2}>
-          <Text>すべてのチャンネル</Text>
-          <MdKeyboardArrowDown />
-        </HStack>
+        <ChannelMenuList />
       </HStack>
       {/* channel title */}
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
