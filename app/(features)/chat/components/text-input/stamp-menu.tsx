@@ -31,10 +31,10 @@ export function StampMenu() {
 
   const dispatch = useDispatchMessages();
   const handleStamp = (e) => {
-    console.log(e.target);
+    console.log(e.target.src);
     dispatch({
       type: "message/add",
-      message: { text: e.target.src, message_type: "stamp", timestamp: new Date().toLocaleString() },
+      message: { channel_id: 0, text: e.target.src, message_type: "stamp", timestamp: new Date().toLocaleString() },
     });
     onClose(); // Popoverを閉じる
   };

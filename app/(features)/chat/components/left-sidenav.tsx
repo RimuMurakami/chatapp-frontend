@@ -1,7 +1,7 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Avatar, Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
-import { CreateChannel } from "./create-channel/create-channel";
+import { CreateChannel } from "./left-sidenav/create-channel";
 import { useChannels } from "../contexts/channel-context";
 import { Link } from "@chakra-ui/next-js";
 
@@ -20,43 +20,16 @@ export function LeftSideNav() {
       </HStack>
       {/* channel title */}
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
-        {/* TODO: チャンネルMockデータ作成後map処理 */}
         <VStack align={"start"} p={1} gap={4}>
           {channels.map((channel) => (
             <Link href={`/chat/${channel.channel_id}`}>
               <HStack gap={3} py={2} width={"240px"} title={channel.channel_name}>
-                <Avatar size={"sm"} />
+                <Avatar size={"sm"} src="/profile-icon/bob.svg" />
                 <Text isTruncated>{channel.channel_name}</Text>
               </HStack>
             </Link>
           ))}
         </VStack>
-        {/* <VStack align={"start"} p={1} gap={4} isTruncated maxW={"250px"}>
-          <HStack gap={3} py={2} width={"100%"}>
-            <Avatar size={"sm"} />
-            <Text>佐藤</Text>
-          </HStack>
-          <HStack gap={3} py={2} width={"100%"}>
-            <Avatar size={"sm"} />
-            <Text>田中</Text>
-          </HStack>
-          <HStack gap={3} py={2} width={"100%"} bgColor={"blue.100"}>
-            <Avatar size={"sm"} />
-            <Text>新規開発プロジェクトについて</Text>
-          </HStack>
-          <HStack gap={3} py={2} width={"100%"}>
-            <Avatar size={"sm"} />
-            <Text>山田</Text>
-          </HStack>
-          <HStack gap={3} py={2} width={"100%"}>
-            <Avatar size={"sm"} />
-            <Text>涼宮</Text>
-          </HStack>
-          <HStack gap={3} py={2} width={"100%"}>
-            <Avatar size={"sm"} />
-            <Text>中村</Text>
-          </HStack>
-        </VStack> */}
         <CreateChannel />
       </VStack>
     </Box>

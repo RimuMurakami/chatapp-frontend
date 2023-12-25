@@ -9,12 +9,12 @@ const sampleData = [
   {
     channel_id: 0,
     channel_name: "マイチャンネル",
-    overview: "",
+    overview: "自分の概要",
   },
   {
     channel_id: 1,
     channel_name: "佐藤のチャンネル",
-    overview: "さとー",
+    overview: "さとーです",
   },
   {
     channel_id: 2,
@@ -28,18 +28,18 @@ const sampleData = [
   },
   {
     channel_id: 4,
-    channel_name: "山田",
-    overview: "",
+    channel_name: "Smith",
+    overview: "Hi",
   },
   {
     channel_id: 5,
     channel_name: "涼宮",
-    overview: "",
+    overview: "くぎゅ",
   },
   {
     channel_id: 6,
     channel_name: "中村",
-    overview: "",
+    overview: "うお",
   },
 ];
 

@@ -1,7 +1,9 @@
 import { LuPencilLine, LuPlus } from "react-icons/lu";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Avatar, Box, Button, Flex, HStack, Input, Text, Textarea, VStack } from "@chakra-ui/react";
+import { useParams } from "next/navigation";
+import { useChannels } from "../contexts/channel-context";
 
 export function RightSideNav() {
   const [overview, setOverview] = useState("概要を入力");
@@ -9,6 +11,13 @@ export function RightSideNav() {
 
   // BUG: 正しくテキストエリアをフォーカスしない
   const overviewRef = useRef(null);
+
+  let { id } = useParams();
+  id = id ?? "0";
+  const channel = useChannels().filter((channel) => channel.channel_id === parseInt(id[0]))[0];
+  useEffect(() => {
+    setOverview(channel.overview);
+  }, [id]);
 
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"}>
@@ -28,13 +37,21 @@ export function RightSideNav() {
             <LuPencilLine size="24px" />
           </Button>
         </HStack>
-        <Flex pt={4} w={"100%"} h={"80%"} bgColor={"green.100"}>
-          <Box flex={1}>
+        <Flex w={"100%"} h={"80%"}>
+          <Box flex={1} pt={4}>
             {toggleOverview ? (
               // `編集中`
-              <Textarea bgColor={"white"} value={overview} p={1} ref={overviewRef} />
+              <Textarea
+                bgColor={"white"}
+                value={overview}
+                p={1}
+                h={"100%"}
+                ref={overviewRef}
+                onChange={(e) => setOverview(e.target.value)}
+                resize={"none"}
+              />
             ) : (
-              <Text>{overview}</Text>
+              <Text pl={2}>{overview}</Text>
             )}
           </Box>
         </Flex>

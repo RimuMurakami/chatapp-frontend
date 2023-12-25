@@ -34,7 +34,7 @@ export function TextInput() {
 
     const newMessage = {
       message_id: Math.floor(Math.random() * 1e10),
-      channel_id: 1,
+      channel_id: 0,
       user_id: 1,
       text: enteredMessage,
       timestamp: new Date().toLocaleString(),
