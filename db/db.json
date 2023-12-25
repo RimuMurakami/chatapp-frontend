@@ -1,6 +1,14 @@
 {
   "messages": [
     {
+      "message_id": 0,
+      "channel_id": 0,
+      "user_id": 10,
+      "text": "自分用のチャット",
+      "timestamp": "2023-08-01T09:00:00",
+      "message_type": "text"
+    },
+    {
       "message_id": 1,
       "channel_id": 1,
       "user_id": 1,
@@ -167,8 +175,8 @@
     },
     {
       "user_id": 4,
-      "username": "鈴木",
-      "email": "鈴木@example.com",
+      "username": "涼宮",
+      "email": "涼宮@example.com",
       "password_hash": "hashed_password",
       "last_login": "2023-08-31T09:00:00",
       "status": "active",
@@ -182,6 +190,15 @@
       "last_login": "2023-08-31T09:00:00",
       "status": "active",
       "profile_picture": "https://example.com/profiles/nakamura.jpg"
+    }
+  ],
+  "channels": [
+    {
+      "channel_id": 1,
+      "group_id": 1,
+      "channel_name": "佐藤",
+      "overview": "概要欄",
+      "type": "private"
     }
   ]
 }

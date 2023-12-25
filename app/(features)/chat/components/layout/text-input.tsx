@@ -101,14 +101,16 @@ export function TextInput() {
                 value={enteredMessage}
                 onChange={(e) => setEnteredMessage(e.target.value)}
                 onKeyDown={(e) => {
-                  if (isEnterToSend) {
-                    if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-                      e.preventDefault();
+                  // BUG: isEnterToSendがTrue時にAlt + Enterで改行されない
+                  const isEnterPressed = e.key === "Enter";
+                  const isComposing = e.nativeEvent.isComposing;
+                  const isShiftPressed = e.shiftKey;
+                  const isAltPressed = e.altKey;
+
+                  if (isEnterPressed && !isComposing) {
+                    if (isEnterToSend && !isShiftPressed && !isAltPressed) {
                       sendMessage(e);
-                    }
-                  } else {
-                    if (e.key === "Enter" && e.shiftKey && !e.nativeEvent.isComposing) {
-                      e.preventDefault();
+                    } else if (!isEnterToSend && isShiftPressed) {
                       sendMessage(e);
                     }
                   }

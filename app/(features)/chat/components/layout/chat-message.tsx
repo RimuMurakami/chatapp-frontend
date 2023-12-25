@@ -1,6 +1,7 @@
 import { Box, Divider, Heading, Text, VStack } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 import { useMessages, useDispatchMessages } from "../../contexts/message-context";
+import Image from "next/image";
 
 export function ChatMessage() {
   const messages = useMessages();
@@ -9,6 +10,17 @@ export function ChatMessage() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
   }, [messages]);
+
+  // useEffect(() => {
+  //   window.addEventListener("keydown", (e) => {
+  //     console.log(e.key);
+  //   });
+  //   return () => {
+  //     window.removeEventListener("keydown", (e) => {
+  //       console.log(e.key);
+  //     });
+  //   };
+  // }, []);
 
   return (
     <>
@@ -29,7 +41,7 @@ export function ChatMessage() {
         </Heading>
         {/* messages */}
         <VStack overflowY={"scroll"} gap={1} h={"100%"} align={"start"}>
-          {messages ? (
+          {messages.length > 0 ? (
             messages.map((message) => (
               <Box
                 key={message.message_id}
@@ -40,18 +52,22 @@ export function ChatMessage() {
                 rounded={"xl"}
                 bgColor={"blue.50"}
               >
-                <Text>
-                  {message.text.split("\n").map((line, i) => (
-                    <span key={i}>
-                      {line}
-                      <br />
-                    </span>
-                  ))}
-                </Text>
+                {message.message_type === "text" ? (
+                  <Text>
+                    {message.text.split("\n").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </Text>
+                ) : (
+                  <Image src={message.text} alt="stamp" width={100} height={100} />
+                )}
               </Box>
             ))
           ) : (
-            <Text>読み込み中...</Text>
+            <h1>読み込み中...</h1>
           )}
           <Box ref={messagesEndRef} />
         </VStack>
