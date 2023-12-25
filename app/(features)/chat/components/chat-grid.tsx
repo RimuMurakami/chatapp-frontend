@@ -6,10 +6,8 @@ import { Header } from "./header";
 import { LeftSideNav } from "./left-sidenav";
 import { RightSideNav } from "./right-sidenav";
 import { TextInput } from "./text-input";
-import { ChatMessage } from "./chat-message";
-import { usePathname } from "next/navigation";
 
-export default function ChatGrid({ pathname }) {
+export default function ChatGrid({ children }) {
   const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });
   const displayLeftSideNavValue = useBreakpointValue({ base: "none", md: "block" });
   const templateAreas = useBreakpointValue({
@@ -48,7 +46,7 @@ export default function ChatGrid({ pathname }) {
           <LeftSideNav />
         </GridItem>
         <GridItem bg="gray.50" area={"chat-message"}>
-          <ChatMessage />
+          {children}
         </GridItem>
         <GridItem bg="gray.100" area={"rightSideNav"} display={displayRightSideNavValue}>
           <RightSideNav />

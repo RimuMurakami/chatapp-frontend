@@ -6,16 +6,14 @@ import { useMessages, useDispatchMessages } from "@/app/(features)/chat/contexts
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useChannels } from "../../contexts/channel-context";
-import { channel } from "diagnostics_channel";
 
-export default function Page() {
-  const { id } = useParams();
+export default function ChatMessage() {
+  let { id } = useParams();
+  id = id ?? "0";
   const messages = useMessages().filter((message) => message.channel_id === parseInt(id[0]));
   const messagesEndRef = useRef(null);
 
-  // const { channel_name } = useChannels().filter((channel) => channel.channel_id === parseInt(id[0]));
   const { channel_name } = useChannels().filter((channel) => channel.channel_id === parseInt(id[0]))[0];
-  console.log(channel_name);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
@@ -39,8 +37,8 @@ export default function Page() {
           {channel_name}
         </Heading>
         {/* messages */}
-        <VStack overflowY={"scroll"} gap={1} h={"100%"}>
-          <Box marginTop={"auto"}>
+        <VStack overflowY={"scroll"} gap={1} h={"100%"} w={"100%"}>
+          <Box marginTop={"auto"} w={"100%"}>
             {messages.length > 0 ? (
               messages.map((message) => (
                 <Box
@@ -48,7 +46,6 @@ export default function Page() {
                   border={"1px solid"}
                   borderColor={"gray.300"}
                   p={6}
-                  w={"100%"}
                   rounded={"xl"}
                   bgColor={"blue.50"}
                 >
