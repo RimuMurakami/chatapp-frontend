@@ -2,16 +2,14 @@
 
 import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 
-import { Header } from "./components/header";
-import { LeftSideNav } from "./components/left-sidenav";
-import { RightSideNav } from "./components/right-sidenav";
-import { TextInput } from "./components/text-input";
-import { ChatMessage } from "./components/chat-message";
+import { Header } from "./header";
+import { LeftSideNav } from "./left-sidenav";
+import { RightSideNav } from "./right-sidenav";
+import { TextInput } from "./text-input";
+import { ChatMessage } from "./chat-message";
 import { usePathname } from "next/navigation";
 
-export default function Page() {
-  const pathname = usePathname();
-
+export default function ChatGrid({ pathname }) {
   const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });
   const displayLeftSideNavValue = useBreakpointValue({ base: "none", md: "block" });
   const templateAreas = useBreakpointValue({

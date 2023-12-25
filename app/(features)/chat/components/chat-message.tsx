@@ -11,17 +11,6 @@ export function ChatMessage() {
     messagesEndRef.current?.scrollIntoView();
   }, [messages]);
 
-  // useEffect(() => {
-  //   window.addEventListener("keydown", (e) => {
-  //     console.log(e.key);
-  //   });
-  //   return () => {
-  //     window.removeEventListener("keydown", (e) => {
-  //       console.log(e.key);
-  //     });
-  //   };
-  // }, []);
-
   return (
     <>
       <VStack p={1} h={"calc(100dvh - 240px)"}>

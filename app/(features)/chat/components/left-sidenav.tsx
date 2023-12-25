@@ -3,6 +3,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { Avatar, Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import { CreateChannel } from "./create-channel/create-channel";
 import { useChannels } from "../contexts/channel-context";
+import { Link } from "@chakra-ui/next-js";
 
 export function LeftSideNav() {
   const channels = useChannels();
@@ -20,12 +21,14 @@ export function LeftSideNav() {
       {/* channel title */}
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
         {/* TODO: チャンネルMockデータ作成後map処理 */}
-        <VStack align={"start"} p={1} gap={4} isTruncated maxW={"250px"}>
+        <VStack align={"start"} p={1} gap={4}>
           {channels.map((channel) => (
-            <HStack gap={3} py={2} width={"100%"}>
-              <Avatar size={"sm"} />
-              <Text>{channel.channel_name}</Text>
-            </HStack>
+            <Link href={`/chat/${channel.channel_id}`}>
+              <HStack gap={3} py={2} width={"240px"} title={channel.channel_name}>
+                <Avatar size={"sm"} />
+                <Text isTruncated>{channel.channel_name}</Text>
+              </HStack>
+            </Link>
           ))}
         </VStack>
         {/* <VStack align={"start"} p={1} gap={4} isTruncated maxW={"250px"}>

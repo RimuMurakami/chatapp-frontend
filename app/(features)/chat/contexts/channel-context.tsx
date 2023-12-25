@@ -7,32 +7,37 @@ const ChannelDispatchContext = createContext(null);
 
 const sampleData = [
   {
-    channel_id: Math.floor(Math.random() * 1e10),
-    channel_name: "佐藤",
+    channel_id: 0,
+    channel_name: "マイチャンネル",
     overview: "",
   },
   {
-    channel_id: Math.floor(Math.random() * 1e10),
-    channel_name: "田中",
-    overview: "",
+    channel_id: 1,
+    channel_name: "佐藤のチャンネル",
+    overview: "さとー",
   },
   {
-    channel_id: Math.floor(Math.random() * 1e10),
+    channel_id: 2,
+    channel_name: "田中 悟",
+    overview: "たなかの島",
+  },
+  {
+    channel_id: 3,
     channel_name: "新規開発プロジェクトについて",
     overview: "頑張りましょう",
   },
   {
-    channel_id: Math.floor(Math.random() * 1e10),
+    channel_id: 4,
     channel_name: "山田",
     overview: "",
   },
   {
-    channel_id: Math.floor(Math.random() * 1e10),
+    channel_id: 5,
     channel_name: "涼宮",
     overview: "",
   },
   {
-    channel_id: Math.floor(Math.random() * 1e10),
+    channel_id: 6,
     channel_name: "中村",
     overview: "",
   },

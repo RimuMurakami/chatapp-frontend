@@ -1,7 +1,12 @@
 "use client";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { MessageProvider } from "../contexts/message-context";
+import { ChannelProvider } from "../contexts/channel-context";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <ChakraProvider>{children}</ChakraProvider>;
+  return (
+    <MessageProvider>
+      <ChannelProvider>{children}</ChannelProvider>
+    </MessageProvider>
+  );
 }

@@ -1,5 +1,4 @@
-import { MessageProvider } from "./contexts/message-context";
-import { ChannelProvider } from "./contexts/channel-context";
+import { Providers } from "./providers/providers";
 
 import type { Metadata } from "next";
 
@@ -9,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <MessageProvider>
-      <ChannelProvider>{children}</ChannelProvider>
-    </MessageProvider>
+    <>
+      <Providers>{children}</Providers>
+    </>
   );
 }
