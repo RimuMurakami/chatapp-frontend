@@ -9,7 +9,6 @@ export function RightSideNav() {
   const [overview, setOverview] = useState("概要を入力");
   const [toggleOverview, setToggleOverview] = useState(false);
 
-  // BUG: 正しくテキストエリアをフォーカスしない
   const overviewRef = useRef(null);
   useEffect(() => {
     toggleOverview

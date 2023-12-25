@@ -159,6 +159,102 @@
       "text": "田中のチャンネル",
       "timestamp": "2023-08-31T09:00:00",
       "message_type": "text"
+    },
+    {
+      "message_id": 20,
+      "channel_id": 2,
+      "user_id": 6,
+      "text": "こんにちは、田中さん。今日の天気はどうですか？",
+      "timestamp": "2023-08-31T09:05:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 21,
+      "channel_id": 2,
+      "user_id": 2,
+      "text": "Richardさん、こんにちは。今日は晴れてとてもいい天気ですよ。",
+      "timestamp": "2023-08-31T09:10:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 22,
+      "channel_id": 2,
+      "user_id": 6,
+      "text": "それは良かったです。私のところは少し曇っています。",
+      "timestamp": "2023-08-31T09:15:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 23,
+      "channel_id": 2,
+      "user_id": 2,
+      "text": "そうですか。でも、曇りの日も落ち着いていていいですよね。",
+      "timestamp": "2023-08-31T09:20:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 24,
+      "channel_id": 2,
+      "user_id": 6,
+      "text": "確かにそうですね。今日の仕事はどうですか？",
+      "timestamp": "2023-08-31T09:25:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 25,
+      "channel_id": 2,
+      "user_id": 2,
+      "text": "順調に進んでいます。Richardさんの方はどうですか？",
+      "timestamp": "2023-08-31T09:30:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 26,
+      "channel_id": 2,
+      "user_id": 6,
+      "text": "私も順調です。最近新しいプロジェクトを始めました。",
+      "timestamp": "2023-08-31T09:35:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 27,
+      "channel_id": 2,
+      "user_id": 2,
+      "text": "それは興味深いですね。何のプロジェクトですか？",
+      "timestamp": "2023-08-31T09:40:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 28,
+      "channel_id": 2,
+      "user_id": 6,
+      "text": "新しいAI技術を開発しています。とても楽しいです。",
+      "timestamp": "2023-08-31T09:45:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 29,
+      "channel_id": 2,
+      "user_id": 2,
+      "text": "それはすごいですね。成功を祈っています。",
+      "timestamp": "2023-08-31T09:50:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 30,
+      "channel_id": 2,
+      "user_id": 6,
+      "text": "ありがとうございます。田中さんも頑張ってください。",
+      "timestamp": "2023-08-31T09:55:00",
+      "message_type": "text"
+    },
+    {
+      "message_id": 31,
+      "channel_id": 2,
+      "user_id": 2,
+      "text": "はい、ありがとうございます。また話しましょう。",
+      "timestamp": "2023-08-31T10:00:00",
+      "message_type": "text"
     }
   ],
   "users": [
@@ -206,6 +302,15 @@
       "last_login": "2023-08-31T09:00:00",
       "status": "active",
       "profile_picture": "https://example.com/profiles/nakamura.jpg"
+    },
+    {
+      "user_id": 6,
+      "username": "Richard Meatball",
+      "email": "rm@example.com",
+      "password_hash": "hashed_password",
+      "last_login": "2023-08-31T09:00:00",
+      "status": "active",
+      "profile_picture": "/profile-icon/rechard.svg"
     }
   ]
 }

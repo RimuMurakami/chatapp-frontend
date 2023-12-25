@@ -51,6 +51,15 @@ const sampleData = [
     status: "active",
     profile_picture: "",
   },
+  {
+    user_id: 6,
+    username: "Richard Meatball",
+    email: "rm@example.com",
+    password_hash: "hashed_password",
+    last_login: "2023-08-31T09:00:00",
+    status: "active",
+    profile_picture: "/profile-icon/rechard.svg",
+  },
 ];
 
 const userReducer = (users, action) => {
