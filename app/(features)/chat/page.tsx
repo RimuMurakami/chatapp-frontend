@@ -6,8 +6,12 @@ import { LeftSideNav } from "./components/left-sidenav";
 import { RightSideNav } from "./components/right-sidenav";
 import { TextInput } from "./components/text-input";
 import { ChatMessage } from "./components/chat-message";
+import { usePathname } from "next/navigation";
+import { DefaultChatMessage } from "./components/chat-message/default-chat-message";
 
 export default function Page() {
+  const pathname = usePathname();
+
   const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });
   const displayLeftSideNavValue = useBreakpointValue({ base: "none", md: "block" });
   const templateAreas = useBreakpointValue({
