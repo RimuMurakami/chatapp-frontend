@@ -13,7 +13,7 @@ import {
   Textarea,
   Input,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatchChannels } from "../../contexts/channel-context";
 
 export function CreateChannel() {
@@ -21,6 +21,16 @@ export function CreateChannel() {
 
   const [channelName, setChannelName] = useState("");
   const [channelOverview, setChannelOverview] = useState("");
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    }
+  }, [isOpen]);
 
   const dispatch = useDispatchChannels();
   const handleCreateChannel = () => {
@@ -46,7 +56,7 @@ export function CreateChannel() {
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent maxW={"64dvw"}>
           <ModalHeader>新しいチャンネルを作成</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -57,10 +67,12 @@ export function CreateChannel() {
                 placeholder={"チャンネル名を入力"}
                 value={channelName}
                 onChange={(e) => setChannelName(e.target.value)}
+                ref={inputRef}
               />
               <div>概要</div>
               <Textarea
                 placeholder="概要を入力"
+                resize={"none"}
                 value={channelOverview}
                 onChange={(e) => setChannelOverview(e.target.value)}
               />

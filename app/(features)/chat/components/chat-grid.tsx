@@ -6,9 +6,6 @@ import { Header } from "./header";
 import { LeftSideNav } from "./left-sidenav";
 import { RightSideNav } from "./right-sidenav";
 import { TextInput } from "./text-input";
-import { useParams } from "next/navigation";
-import { useMessages } from "../contexts/message-context";
-import { useChannels } from "../contexts/channel-context";
 
 export default function ChatGrid({ children }) {
   const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });
@@ -30,13 +27,6 @@ export default function ChatGrid({ children }) {
     md: "260px 1fr",
     lg: "260px 1fr 280px",
   });
-
-  // let { id } = useParams();
-  // id = id ?? "0";
-  // const messages = useMessages().filter((message) => message.channel_id === parseInt(id[0]));
-  // const { channel_name } = useChannels().filter((channel) => channel.channel_id === parseInt(id[0]))[0];
-
-  // console.log(id);
 
   return (
     <>

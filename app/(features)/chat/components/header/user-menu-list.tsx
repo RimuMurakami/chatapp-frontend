@@ -1,7 +1,9 @@
 import { IoSettingsOutline } from "react-icons/io5";
 
-import { Menu, MenuButton, Button, MenuList, MenuItem, Avatar, HStack, Text } from "@chakra-ui/react";
+import { Menu, MenuButton, Button, MenuList, MenuItem, Avatar, HStack, Text, Box } from "@chakra-ui/react";
 import { EditProfile } from "./edit-profile";
+import { AppSetting } from "./app-setting";
+import { Link } from "@chakra-ui/next-js";
 
 export function UserMenuList() {
   return (
@@ -24,8 +26,14 @@ export function UserMenuList() {
         <MenuItem>
           <EditProfile />
         </MenuItem>
-        <MenuItem>アプリ設定</MenuItem>
-        <MenuItem>ログアウト</MenuItem>
+        <MenuItem>
+          <AppSetting />
+        </MenuItem>
+        <MenuItem>
+          <Link href={"/"} flex={1}>
+            ログアウト
+          </Link>
+        </MenuItem>
       </MenuList>
     </Menu>
   );

@@ -12,14 +12,15 @@ import {
   Avatar,
   Text,
   Box,
+  Divider,
 } from "@chakra-ui/react";
 
-export function EditProfile() {
+export function AppSetting() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       {/* <Button>Open Modal</Button> */}
-      <Text
+      <Box
         // p={0}
         // bgColor={"transparent"}
         onClick={onOpen}
@@ -29,36 +30,31 @@ export function EditProfile() {
         // fontWeight={"normal"}
         // _hover={{ bgColor: "gray" }}
       >
-        ユーザープロフィール
-      </Text>
+        アプリ設定
+      </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent maxW={"64dvw"}>
-          <ModalHeader p={2}>プロフィール</ModalHeader>
+          <ModalHeader>環境設定</ModalHeader>
           <ModalCloseButton />
-          <ModalBody p={2}>
-            <Box w={"100%"} h={40} bgColor={"blue.300"}>
-              <Avatar
-                name="Rechard Meatball"
-                src="/profile-icon/rechard.svg"
-                size={"xl"}
-                ml={3}
-                mt={3}
-                border={"3px solid white"}
-              />
+          <ModalBody>
+            <Box h={8} borderBottom={"2px solid"}>
+              <Text>通知設定</Text>
             </Box>
-            <Box w={"100%"} h={"500px"} bgColor={"blue.50"}>
-              名前
+            <Box w={"100%"} h={"500px"} pt={8}>
+              <label htmlFor="noti">
+                <input type="checkbox" name="noti" id="noti" />
+                デスクトップ通知を表示
+              </label>
             </Box>
           </ModalBody>
-
           <ModalFooter>
             <Button variant="ghost" onClick={onClose}>
               キャンセル
             </Button>
             <Button colorScheme="blue" onClick={onClose}>
-              保存
+              保存する
             </Button>
           </ModalFooter>
         </ModalContent>

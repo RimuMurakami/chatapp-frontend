@@ -11,6 +11,13 @@ export function RightSideNav() {
 
   // BUG: 正しくテキストエリアをフォーカスしない
   const overviewRef = useRef(null);
+  useEffect(() => {
+    toggleOverview
+      ? setTimeout(() => {
+          overviewRef.current?.focus();
+        }, 0)
+      : "";
+  }, [toggleOverview]);
 
   let { id } = useParams();
   id = id ?? "0";
@@ -28,10 +35,7 @@ export function RightSideNav() {
             color={"blackalpha.700"}
             p={0}
             onClick={() => {
-              setToggleOverview(!toggleOverview);
-              if (overviewRef.current) {
-                overviewRef.current.focus();
-              }
+              setToggleOverview((prev) => !prev);
             }}
           >
             <LuPencilLine size="24px" />
@@ -61,29 +65,8 @@ export function RightSideNav() {
           <Text>タスク</Text>
           <LuPlus size="24px" />
         </HStack>
-        <Box pt={4} w={"100%"} h={100} overflow={"auto"} bgColor={"green.100"}>
-          ここにタスク Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, inventore. At deleniti, error et
-          numquam molestias architecto vitae! Suscipit in ea ad repudiandae dolorum libero esse accusantium iure
-          delectus dolorem. Nemo quidem distinctio cum similique nulla exercitationem ea culpa repellendus consectetur
-          harum, molestiae inventore quas sed officiis sapiente obcaecati temporibus alias beatae modi! Maiores, maxime
-          molestiae quos adipisci veritatis impedit. Natus aspernatur non reiciendis labore quaerat, velit alias quae
-          sint explicabo ipsam? Unde culpa excepturi neque aspernatur repellat hic ad? Doloribus ipsam quaerat obcaecati
-          impedit totam accusamus alias ipsum ad? Eaque suscipit error magni maiores enim. Adipisci, cupiditate libero.
-          Praesentium deleniti accusantium repellendus, aspernatur illo sunt esse voluptates autem earum minus, quisquam
-          aut consequuntur harum sequi exercitationem non natus. Dolores. Labore laborum, voluptate debitis quos aliquam
-          quas facilis, repellat magni neque illum cum, rerum quae commodi nisi alias. Tempore nemo necessitatibus
-          commodi vel provident dolorum magnam esse velit quia laborum. Excepturi, magni aliquam. Repudiandae modi iure
-          quam dolorem perspiciatis ipsam odit cum, numquam facere corrupti doloremque excepturi, aliquam dolore
-          incidunt, minima voluptate perferendis et tenetur amet magni dicta quasi hic. Earum impedit quae quisquam
-          itaque tempora, delectus consequatur laudantium nesciunt voluptatum vitae dolore nulla similique corrupti.
-          Placeat vitae atque illum excepturi vel repudiandae, ullam est, sed nostrum esse, quae quia! Corporis quos
-          facere velit aperiam suscipit adipisci voluptatem itaque tenetur autem sunt ipsa nihil deleniti quas, aliquam
-          culpa quasi. Debitis illo odio voluptates alias esse consequuntur hic excepturi adipisci culpa! Quod possimus
-          quisquam temporibus labore deleniti minus enim, dolorum et natus doloremque totam perspiciatis a odit ipsam
-          cupiditate iusto aspernatur quo consectetur eos repudiandae corporis pariatur voluptas. Atque, praesentium
-          amet. Blanditiis aliquam illum, quod architecto rem tenetur alias adipisci labore. Magnam perspiciatis enim
-          aut nesciunt rerum. Ab fugit sed culpa necessitatibus, neque cupiditate, quaerat excepturi nihil dignissimos
-          architecto, corporis veritatis!
+        <Box pt={4} w={"100%"} h={100} overflow={"auto"}>
+          ここにタスク
         </Box>
       </Box>
     </Box>
