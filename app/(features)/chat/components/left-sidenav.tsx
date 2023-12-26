@@ -19,7 +19,7 @@ export function LeftSideNav() {
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
         <VStack align={"start"} p={1} gap={4}>
           {channels.map((channel) => (
-            <Link href={`/chat/${channel.channel_id}`}>
+            <Link href={`/chat/${channel.channel_id}`} key={channel.channel_id}>
               <HStack gap={3} py={2} width={"240px"} title={channel.channel_name}>
                 <Avatar size={"sm"} src="/profile-icon/bob.svg" />
                 <Text isTruncated>{channel.channel_name}</Text>

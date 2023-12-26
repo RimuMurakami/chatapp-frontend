@@ -40,26 +40,21 @@ export default function ChatMessage() {
         <VStack overflowY={"scroll"} gap={1} h={"100%"} w={"100%"}>
           <Box marginTop={"auto"} w={"100%"}>
             {messages.length > 0 ? (
-              messages.map((message) => (
-                <Box
-                  key={message.message_id}
-                  border={"1px solid"}
-                  borderColor={"gray.300"}
-                  p={6}
-                  rounded={"xl"}
-                  bgColor={"blue.50"}
-                >
+              messages.map((message, i) => (
+                <Box key={i} border={"1px solid"} borderColor={"gray.300"} p={6} rounded={"xl"} bgColor={"blue.50"}>
                   {message.message_type === "text" ? (
                     <Text>
                       {message.text.split("\n").map((line, i) => (
-                        <span key={i}>
+                        <span key={line}>
                           {line}
                           <br />
                         </span>
                       ))}
                     </Text>
-                  ) : (
+                  ) : message.message_type === "stamp" ? (
                     <Image src={message.text} alt="stamp" width={100} height={100} />
+                  ) : (
+                    <Text>{message.text}</Text>
                   )}
                 </Box>
               ))
