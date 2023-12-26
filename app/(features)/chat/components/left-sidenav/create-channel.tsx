@@ -50,7 +50,7 @@ export function CreateChannel() {
   return (
     <>
       {/* <Button>Open Modal</Button> */}
-      <Button display={"flex"} alignSelf={"center"} my={3} colorScheme={"blue"} variant={"outline"} onClick={onOpen}>
+      <Button display={"flex"} alignSelf={"center"} my={3} colorScheme={"blue"} color={"white"} onClick={onOpen}>
         新しいチャンネルを作成
       </Button>
 

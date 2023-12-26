@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
+import { Grid, GridItem, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 
 import { Header } from "./header";
 import { LeftSideNav } from "./left-sidenav";
@@ -11,8 +11,8 @@ import { useState } from "react";
 export default function ChatGrid({ children }) {
   const [isLeftSideNavVisible, setIsLeftSideNavVisible] = useState(true);
   const [isRightSideNavVisible, setIsRightSideNavVisible] = useState(true);
-  const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" });
-  const displayLeftSideNavValue = useBreakpointValue({ base: "none", md: "block" });
+  const displayRightSideNavValue = useBreakpointValue({ base: "none", lg: "block" }, { ssr: false });
+  const displayLeftSideNavValue = useBreakpointValue({ base: "none", md: "block" }, { ssr: false });
   const templateAreas = useBreakpointValue({
     base: `"header header header "
            "chat-message chat-message chat-message"
@@ -31,6 +31,9 @@ export default function ChatGrid({ children }) {
     lg: `${isLeftSideNavVisible ? "260px" : "0px"} 1fr ${isRightSideNavVisible ? "280px" : "0px"}`,
   });
 
+  // def colorMode
+  const sideNavBgColor = useColorModeValue("gray.100", "gray.700");
+
   return (
     <>
       <Grid
@@ -39,7 +42,7 @@ export default function ChatGrid({ children }) {
         gridTemplateColumns={templateColumns}
         h="100dvh"
         w="100dvw"
-        // color="blackAlpha.700"
+        color="blackAlpha.700"
         // fontWeight="bold"
       >
         <GridItem bg="blue.800" area={"header"}>
