@@ -37,7 +37,7 @@ export function EditProfile() {
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent maxW={"64dvw"}>
+        <ModalContent maxW={{ base: "100dvw", md: "64dvw" }}>
           <ModalHeader p={2}>プロフィール</ModalHeader>
           <ModalCloseButton />
           <ModalBody p={0} px={1}>

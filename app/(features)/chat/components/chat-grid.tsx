@@ -39,7 +39,7 @@ export default function ChatGrid({ children }) {
         gridTemplateColumns={templateColumns}
         h="100dvh"
         w="100dvw"
-        color="blackAlpha.700"
+        // color="blackAlpha.700"
         // fontWeight="bold"
       >
         <GridItem bg="blue.800" area={"header"}>
@@ -51,7 +51,7 @@ export default function ChatGrid({ children }) {
         <GridItem bg="gray.50" area={"chat-message"}>
           {children}
         </GridItem>
-        <GridItem bg="gray.100" area={"rightSideNav"} display={displayRightSideNavValue}>
+        <GridItem bg="gray.100" area={"rightSideNav"} display={displayRightSideNavValue} position={"relative"}>
           {isRightSideNavVisible && <RightSideNav />}
         </GridItem>
         <GridItem bg="white" area={"textInput"}>

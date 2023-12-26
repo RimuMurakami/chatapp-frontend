@@ -6,7 +6,7 @@ import { Link } from "@chakra-ui/next-js";
 export function Header() {
   return (
     <>
-      <Box color={"white"}>
+      <Box>
         <HStack justify={"space-between"}>
           {/* Desktop */}
           <HStack>

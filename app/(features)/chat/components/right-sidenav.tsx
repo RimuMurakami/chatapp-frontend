@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { Avatar, Box, Button, Flex, HStack, Input, Text, Textarea, VStack } from "@chakra-ui/react";
 import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
+import { ColorModeSwitcher } from "./right-sidenav/color-mode-switch";
 
 export function RightSideNav() {
   const [overview, setOverview] = useState("概要を入力");
@@ -73,6 +74,7 @@ export function RightSideNav() {
           </Button>
         </HStack>
       </Box>
+      <ColorModeSwitcher />
     </Box>
   );
 }
