@@ -12,7 +12,7 @@ const initialMessages = [
   {
     message_id: 0,
     channel_id: 0,
-    user_id: 10,
+    user_id: 0,
     text: "自分用のチャット",
     timestamp: "2023-08-01T09:00:00",
     message_type: "text",
@@ -68,7 +68,7 @@ const initialMessages = [
   {
     message_id: 7,
     channel_id: 3,
-    user_id: 2,
+    user_id: 4,
     text: "個人的にはFastAPIの方が開発速度が速く、非同期処理も得意なのでおすすめです。",
     timestamp: "2023-08-10T09:00:00",
     message_type: "text",
@@ -76,7 +76,7 @@ const initialMessages = [
   {
     message_id: 8,
     channel_id: 3,
-    user_id: 2,
+    user_id: 3,
     text: "私もFastAPIに一票です。最近のトレンドも考慮すると、このフレームワークが良いと思います。",
     timestamp: "2023-08-10T09:00:00",
     message_type: "text",
@@ -100,7 +100,7 @@ const initialMessages = [
   {
     message_id: 11,
     channel_id: 3,
-    user_id: 2,
+    user_id: 5,
     text: "UIの動的な変更が多いのであればReactが良いと思います。",
     timestamp: "2023-08-20T09:00:00",
     message_type: "text",
@@ -108,7 +108,7 @@ const initialMessages = [
   {
     message_id: 12,
     channel_id: 3,
-    user_id: 2,
+    user_id: 4,
     text: "私もReactが使いやすいと感じます。公式のドキュメントも充実しているので、サポートも受けやすいと思います。",
     timestamp: "2023-08-20T09:00:00",
     message_type: "text",
@@ -124,7 +124,7 @@ const initialMessages = [
   {
     message_id: 14,
     channel_id: 3,
-    user_id: 1,
+    user_id: 2,
     text: "皆さん、今月の進捗はどうでしょうか？",
     timestamp: "2023-08-31T09:00:00",
     message_type: "text",
@@ -132,7 +132,7 @@ const initialMessages = [
   {
     message_id: 15,
     channel_id: 3,
-    user_id: 2,
+    user_id: 1,
     text: "FastAPIでのバックエンドの基盤はほぼ完成しました。あとは、フロントエンドとの連携を強化する必要があります。",
     timestamp: "2023-08-31T09:00:00",
     message_type: "text",
@@ -140,7 +140,7 @@ const initialMessages = [
   {
     message_id: 16,
     channel_id: 3,
-    user_id: 2,
+    user_id: 5,
     text: "Reactの部分も大体の機能は実装できました。ただ、いくつかのバグがあるので、それを修正する必要があります。",
     timestamp: "2023-08-31T09:00:00",
     message_type: "text",
@@ -148,7 +148,7 @@ const initialMessages = [
   {
     message_id: 17,
     channel_id: 3,
-    user_id: 1,
+    user_id: 2,
     text: "了解しました。来月も引き続き頑張っていきましょう！",
     timestamp: "2023-08-31T09:00:00",
     message_type: "text",

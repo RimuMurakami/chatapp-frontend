@@ -59,14 +59,19 @@ export function RightSideNav() {
           </Box>
         </Flex>
       </Box>
-      <Box h={"100%"}>
+      <Box>
         <HStack p={1} h={12} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
           <Text>タスク</Text>
           <LuPlus size="24px" />
         </HStack>
-        <Box pt={4} w={"100%"} h={100} overflow={"auto"}>
-          ここにタスク
-        </Box>
+        <HStack p={3} pl={2} mt={2} bgColor={"white"}>
+          <Box w={"100%"} overflow={"auto"}>
+            ここにタスク
+          </Box>
+          <Button colorScheme={"blue"} size={"sm"}>
+            完了
+          </Button>
+        </HStack>
       </Box>
     </Box>
   );

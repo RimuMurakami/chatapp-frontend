@@ -1,11 +1,12 @@
 "use client";
 
-import { Box, Divider, Heading, Text, VStack } from "@chakra-ui/react";
+import { Avatar, Box, Divider, HStack, Heading, Spacer, Text, VStack } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 import { useMessages, useDispatchMessages } from "@/app/(features)/chat/contexts/message-context";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useChannels } from "../../contexts/channel-context";
+import { useUsers } from "../../contexts/user-context";
 
 export default function ChatMessage() {
   let { id } = useParams();
@@ -14,6 +15,8 @@ export default function ChatMessage() {
   const messagesEndRef = useRef(null);
 
   const { channel_name } = useChannels().filter((channel) => channel.channel_id === parseInt(id[0]))[0];
+
+  const users = useUsers();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
@@ -40,24 +43,36 @@ export default function ChatMessage() {
         <VStack overflowY={"scroll"} gap={1} h={"100%"} w={"100%"}>
           <Box marginTop={"auto"} w={"100%"}>
             {messages.length > 0 ? (
-              messages.map((message, i) => (
-                <Box key={i} border={"1px solid"} borderColor={"gray.300"} p={6} rounded={"xl"} bgColor={"blue.50"}>
-                  {message.message_type === "text" ? (
-                    <Text>
-                      {message.text.split("\n").map((line, i) => (
-                        <span key={line}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                    </Text>
-                  ) : message.message_type === "stamp" ? (
-                    <Image src={message.text} alt="stamp" width={100} height={100} />
-                  ) : (
-                    <Text>{message.text}</Text>
-                  )}
-                </Box>
-              ))
+              messages.map((message, i) => {
+                const user = users.find((user) => user.user_id === message.user_id);
+                return (
+                  <Box key={i} border={"1px solid"} borderColor={"gray.300"} rounded={"xl"} bgColor={"blue.50"}>
+                    <HStack p={2} pb={0}>
+                      <Avatar size={"sm"} />
+                      <Box>{user?.username}</Box>
+                      <Spacer />
+                      <Box>{message.timestamp}</Box>
+                    </HStack>
+                    {/* message_text */}
+                    <Box p={4}>
+                      {message.message_type === "text" ? (
+                        <Text>
+                          {message.text.split("\n").map((line, i) => (
+                            <span key={line}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
+                        </Text>
+                      ) : message.message_type === "stamp" ? (
+                        <Image src={message.text} alt="stamp" width={100} height={100} />
+                      ) : (
+                        <Text>{message.text}</Text>
+                      )}
+                    </Box>
+                  </Box>
+                );
+              })
             ) : (
               <h1>読み込み中...</h1>
             )}

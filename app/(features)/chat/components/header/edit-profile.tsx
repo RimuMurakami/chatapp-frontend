@@ -12,6 +12,9 @@ import {
   Avatar,
   Text,
   Box,
+  VStack,
+  Divider,
+  Heading,
 } from "@chakra-ui/react";
 
 export function EditProfile() {
@@ -37,8 +40,8 @@ export function EditProfile() {
         <ModalContent maxW={"64dvw"}>
           <ModalHeader p={2}>プロフィール</ModalHeader>
           <ModalCloseButton />
-          <ModalBody p={2}>
-            <Box w={"100%"} h={40} bgColor={"blue.300"}>
+          <ModalBody p={0} px={1}>
+            <Box w={"100%"} h={40} bgColor={"blue.600"}>
               <Avatar
                 name="Rechard Meatball"
                 src="/profile-icon/rechard.svg"
@@ -48,11 +51,17 @@ export function EditProfile() {
                 border={"3px solid white"}
               />
             </Box>
-            <Box w={"100%"} h={"500px"} bgColor={"blue.50"}>
-              名前
-            </Box>
+            <VStack h={"25rem"} align={"start"} p={4} gap={4}>
+              <HStack justify={"space-between"} w={"100%"}>
+                <Heading size={"lg"}>Richard Meatball</Heading>
+                <Button>編集</Button>
+              </HStack>
+              <Box>株式会社みとぼ</Box>
+              <Box>ChatApp ID: 123456</Box>
+              <Divider />
+              <Box>よろしくお願いします。</Box>
+            </VStack>
           </ModalBody>
-
           <ModalFooter>
             <Button variant="ghost" onClick={onClose}>
               キャンセル
