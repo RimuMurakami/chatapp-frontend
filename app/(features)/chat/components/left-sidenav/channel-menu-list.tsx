@@ -11,7 +11,7 @@ export function ChannelMenuList() {
           <MdKeyboardArrowDown />
         </HStack>
       </MenuButton>
-      <MenuList color={"white"}>
+      <MenuList>
         <MenuItem>チャンネル一覧</MenuItem>
         <MenuItem>チャンネル一覧</MenuItem>
         <MenuItem>フィルタ等</MenuItem>

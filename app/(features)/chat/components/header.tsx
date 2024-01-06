@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, HStack, Input, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, FormLabel, HStack, Input, TagLabel, Text } from "@chakra-ui/react";
 import { MdOutlineSearch } from "react-icons/md";
 import { UserMenuList } from "./header/user-menu-list";
 import { Link } from "@chakra-ui/next-js";
@@ -6,10 +6,10 @@ import { Link } from "@chakra-ui/next-js";
 export function Header() {
   return (
     <>
-      <Box color={"white"}>
+      <Box>
         <HStack justify={"space-between"}>
           {/* Desktop */}
-          <HStack>
+          <HStack color={"white"}>
             <Link href={"/chat"} _hover={{ textDecoration: "none" }}>
               <Text
                 textAlign={{ base: "start", md: "center" }}
@@ -21,8 +21,17 @@ export function Header() {
               </Text>
             </Link>
             <HStack display={{ base: "none", md: "Flex" }}>
-              <MdOutlineSearch size="30px" />
-              <Input h={"30px"} w={"300px"} placeholder="チャット名、メッセージ内容を検索" />
+              <label htmlFor="search">
+                <MdOutlineSearch size="30px" />
+              </label>
+              <Input
+                name="search"
+                id="search"
+                h={"30px"}
+                w={"300px"}
+                placeholder="チャット名、メッセージ内容を検索"
+                _placeholder={{ color: "white" }}
+              />
             </HStack>
           </HStack>
           <UserMenuList />

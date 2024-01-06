@@ -1,31 +1,50 @@
 import { IoHomeOutline } from "react-icons/io5";
-import { Avatar, Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, HStack, Text, VStack, useColorModeValue } from "@chakra-ui/react";
 import { CreateChannel } from "./left-sidenav/create-channel";
 import { useChannels } from "../contexts/channel-context";
 import { Link } from "@chakra-ui/next-js";
 import { ChannelMenuList } from "./left-sidenav/channel-menu-list";
+import { useParams } from "next/navigation";
 
 export function LeftSideNav() {
+  let { id } = useParams();
+  const paramId = (id ?? "0")[0];
+
   const channels = useChannels();
+
+  const bgColor = useColorModeValue("blue.100", "blue.800");
 
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"}>
       {/* nav title */}
       <HStack px={1} h={12} borderBottom={"1px solid"} borderColor={"gray.400"}>
-        <IoHomeOutline size="32px" />
+        <Link href={"/chat"} _hover={{ bg: "blue.100" }}>
+          <IoHomeOutline size="32px" />
+        </Link>
         <ChannelMenuList />
       </HStack>
       {/* channel title */}
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
-        <VStack align={"start"} p={1} gap={4}>
-          {channels.map((channel) => (
-            <Link href={`/chat/${channel.channel_id}`} key={channel.channel_id}>
-              <HStack gap={3} py={2} width={"240px"} title={channel.channel_name}>
-                <Avatar size={"sm"} src="/profile-icon/bob.svg" />
-                <Text isTruncated>{channel.channel_name}</Text>
-              </HStack>
-            </Link>
-          ))}
+        <VStack align={"start"} gap={0}>
+          {channels.map((channel) => {
+            return (
+              <Link
+                href={`/chat/${channel.channel_id}`}
+                key={channel.channel_id}
+                _hover={{ textDecoration: "none", bg: bgColor }}
+                bg={parseInt(paramId) === channel.channel_id ? bgColor : "null"}
+                // border={parseInt(paramId) === channel.channel_id ? "2px solid" : "null"}
+                border={"2px solid"}
+                borderColor={parseInt(paramId) === channel.channel_id ? "blue.200" : "transparent"}
+                rounded={"md"}
+              >
+                <HStack gap={3} p={2} py={3} width={"240px"} title={channel.channel_name}>
+                  <Avatar size={"sm"} src="/profile-icon/bob.svg" />
+                  <Text isTruncated>{channel.channel_name}</Text>
+                </HStack>
+              </Link>
+            );
+          })}
         </VStack>
         <CreateChannel />
       </VStack>

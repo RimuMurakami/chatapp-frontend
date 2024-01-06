@@ -1,12 +1,12 @@
 "use client";
 
 import { Grid, GridItem, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
+import { useState } from "react";
 
 import { Header } from "./header";
 import { LeftSideNav } from "./left-sidenav";
 import { RightSideNav } from "./right-sidenav";
 import { TextInput } from "./text-input";
-import { useState } from "react";
 
 export default function ChatGrid({ children }) {
   const [isLeftSideNavVisible, setIsLeftSideNavVisible] = useState(true);
@@ -32,7 +32,8 @@ export default function ChatGrid({ children }) {
   });
 
   // def colorMode
-  const sideNavBgColor = useColorModeValue("gray.100", "gray.700");
+  const headerBgColor = useColorModeValue("blue.600", "blue.900");
+  const sideNavBgColor = useColorModeValue("gray.100", "gray.800");
 
   return (
     <>
@@ -42,13 +43,13 @@ export default function ChatGrid({ children }) {
         gridTemplateColumns={templateColumns}
         h="100dvh"
         w="100dvw"
-        color="blackAlpha.700"
+        // color="blackAlpha.700"
         // fontWeight="bold"
       >
-        <GridItem bg="blue.800" area={"header"}>
+        <GridItem bg={headerBgColor} area={"header"}>
           <Header />
         </GridItem>
-        <GridItem bg="gray.100" area={"leftSideNav"} display={displayLeftSideNavValue}>
+        <GridItem bg={sideNavBgColor} area={"leftSideNav"} display={displayLeftSideNavValue}>
           {isLeftSideNavVisible && <LeftSideNav />}
         </GridItem>
         <GridItem bg="gray.50" area={"chat-message"}>

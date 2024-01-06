@@ -80,6 +80,7 @@ export function TextInput({
             align={"center"}
             _hover={{ bgColor: "blue.50" }}
             onClick={() => setIsLeftSideNavVisible((prev) => !prev)}
+            cursor={"pointer"}
           >
             {isLeftSideNavVisible ? <MdKeyboardDoubleArrowLeft /> : <MdKeyboardDoubleArrowRight />}
           </Flex>
@@ -108,6 +109,7 @@ export function TextInput({
             align={"center"}
             _hover={{ bgColor: "blue.50" }}
             onClick={() => setIsRightSideNavVisible((prev) => !prev)}
+            cursor={"pointer"}
           >
             {isRightSideNavVisible ? <MdKeyboardDoubleArrowRight /> : <MdKeyboardDoubleArrowLeft />}
           </Flex>
