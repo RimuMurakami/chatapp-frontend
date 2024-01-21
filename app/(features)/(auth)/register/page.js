@@ -1,12 +1,17 @@
 "use client";
 
-import Button from "@/components/Button";
-import Input from "@/components/Input";
-import InputError from "@/components/InputError";
-import Label from "@/components/Label";
-import Link from "next/link";
-import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
+import {
+  Link as ChakraLink,
+  Box,
+  Flex,
+  Input as ChakraInput,
+  Button as ChakraButton,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from "@chakra-ui/react";
+import { useAuth } from "@/app/hooks/auth";
 
 const Page = () => {
   const { register } = useAuth({
@@ -21,6 +26,7 @@ const Page = () => {
   const [errors, setErrors] = useState([]);
 
   const submitForm = (event) => {
+    console.log("clicked");
     event.preventDefault();
 
     register({
@@ -33,81 +39,55 @@ const Page = () => {
   };
 
   return (
-    <form onSubmit={submitForm}>
-      {/* Name */}
-      <div>
-        <Label htmlFor="name">Name</Label>
+    <Box as="form" onSubmit={submitForm}>
+      <FormControl id="name" isRequired>
+        <FormLabel>Name</FormLabel>
+        <ChakraInput value={name} onChange={(event) => setName(event.target.value)} autoFocus />
+        <FormErrorMessage>{errors.name}</FormErrorMessage>
+      </FormControl>
 
-        <Input
-          id="name"
-          type="text"
-          value={name}
-          className="block mt-1 w-full"
-          onChange={(event) => setName(event.target.value)}
-          required
-          autoFocus
-        />
+      <FormControl id="email" mt={4} isRequired>
+        <FormLabel>Email</FormLabel>
+        <ChakraInput type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+        <FormErrorMessage>{errors.email}</FormErrorMessage>
+      </FormControl>
 
-        <InputError messages={errors.name} className="mt-2" />
-      </div>
-
-      {/* Email Address */}
-      <div className="mt-4">
-        <Label htmlFor="email">Email</Label>
-
-        <Input
-          id="email"
-          type="email"
-          value={email}
-          className="block mt-1 w-full"
-          onChange={(event) => setEmail(event.target.value)}
-          required
-        />
-
-        <InputError messages={errors.email} className="mt-2" />
-      </div>
-
-      {/* Password */}
-      <div className="mt-4">
-        <Label htmlFor="password">Password</Label>
-
-        <Input
-          id="password"
+      <FormControl id="password" mt={4} isRequired>
+        <FormLabel>Password</FormLabel>
+        <ChakraInput
           type="password"
           value={password}
-          className="block mt-1 w-full"
           onChange={(event) => setPassword(event.target.value)}
-          required
           autoComplete="new-password"
         />
+        <FormErrorMessage>{errors.password}</FormErrorMessage>
+      </FormControl>
 
-        <InputError messages={errors.password} className="mt-2" />
-      </div>
-
-      {/* Confirm Password */}
-      <div className="mt-4">
-        <Label htmlFor="passwordConfirmation">Confirm Password</Label>
-
-        <Input
-          id="passwordConfirmation"
+      <FormControl id="passwordConfirmation" mt={4} isRequired>
+        <FormLabel>Confirm Password</FormLabel>
+        <ChakraInput
           type="password"
           value={passwordConfirmation}
-          className="block mt-1 w-full"
           onChange={(event) => setPasswordConfirmation(event.target.value)}
-          required
         />
+        <FormErrorMessage>{errors.password_confirmation}</FormErrorMessage>
+      </FormControl>
 
-        <InputError messages={errors.password_confirmation} className="mt-2" />
-      </div>
-
-      <div className="flex items-center justify-end mt-4">
-        <Link href="/login" className="underline text-sm text-gray-600 hover:text-gray-900">
+      <Flex justify="end" mt={4}>
+        <ChakraLink
+          href="/login"
+          color="gray.600"
+          _hover={{ color: "gray.900" }}
+          fontSize="sm"
+          textDecoration="underline"
+        >
           Already registered?
-        </Link>
-
-        <Button className="ml-4">Register</Button>
-      </div>
-    </form>
+        </ChakraLink>
+        <ChakraButton ml={4} type="submit">
+          Register
+        </ChakraButton>
+      </Flex>
+    </Box>
   );
 };
 

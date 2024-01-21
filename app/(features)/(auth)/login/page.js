@@ -1,17 +1,24 @@
 "use client";
 
-import Button from "@/app/(features)/(auth)/components/Button";
-import Input from "@/app/(features)/(auth)/components/Input";
-import InputError from "@/app/(features)/(auth)/components/InputError";
-import Label from "@/app/(features)/(auth)/components/Label";
-import Link from "next/link";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Checkbox,
+  Button,
+  Link,
+  useToast,
+  FormErrorMessage,
+} from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/hooks/auth";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import AuthSessionStatus from "@/app/(features)/(auth)/AuthSessionStatus";
 
 const Login = () => {
   const router = useRouter();
+  const toast = useToast();
 
   const { login } = useAuth({
     middleware: "guest",
@@ -47,64 +54,28 @@ const Login = () => {
   return (
     <>
       <AuthSessionStatus className="mb-4" status={status} />
-      <form onSubmit={submitForm}>
-        {/* Email Address */}
-        <div>
-          <Label htmlFor="email">Email</Label>
+      <Box as="form" onSubmit={submitForm}>
+        <FormControl id="email">
+          <FormLabel>Email</FormLabel>
+          <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} isRequired autoFocus />
+          {errors.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
+        </FormControl>
 
-          <Input
-            id="email"
-            type="email"
-            value={email}
-            className="block mt-1 w-full"
-            onChange={(event) => setEmail(event.target.value)}
-            required
-            autoFocus
-          />
+        <FormControl id="password" mt={4}>
+          <FormLabel>Password</FormLabel>
+          <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} isRequired />
+          {errors.password && <FormErrorMessage>{errors.password}</FormErrorMessage>}
+        </FormControl>
 
-          <InputError messages={errors.email} className="mt-2" />
-        </div>
+        <Checkbox id="remember_me" mt={4} onChange={(e) => setShouldRemember(e.target.checked)}>
+          Remember me
+        </Checkbox>
 
-        {/* Password */}
-        <div className="mt-4">
-          <Label htmlFor="password">Password</Label>
-
-          <Input
-            id="password"
-            type="password"
-            value={password}
-            className="block mt-1 w-full"
-            onChange={(event) => setPassword(event.target.value)}
-            required
-            autoComplete="current-password"
-          />
-
-          <InputError messages={errors.password} className="mt-2" />
-        </div>
-
-        {/* Remember Me */}
-        <div className="block mt-4">
-          <label htmlFor="remember_me" className="inline-flex items-center">
-            <input
-              id="remember_me"
-              type="checkbox"
-              name="remember"
-              className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              onChange={(event) => setShouldRemember(event.target.checked)}
-            />
-
-            <span className="ml-2 text-sm text-gray-600">Remember me</span>
-          </label>
-        </div>
-
-        <div className="flex items-center justify-end mt-4">
-          <Link href="/forgot-password" className="underline text-sm text-gray-600 hover:text-gray-900">
-            Forgot your password?
-          </Link>
-
-          <Button className="ml-3">Login</Button>
-        </div>
-      </form>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mt={4}>
+          <Link href="/forgot-password">Forgot your password?</Link>
+          <Button type="submit">Login</Button>
+        </Box>
+      </Box>
     </>
   );
 };
