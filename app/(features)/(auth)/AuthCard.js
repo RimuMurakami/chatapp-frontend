@@ -1,4 +1,5 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Button, Divider, HStack, Stack } from "@chakra-ui/react";
+import { OAuthButtonGroup } from "./components/oauth/OAuthButtonGroup";
 
 const AuthCard = ({ logo, children }) => (
   //   <Box className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
@@ -13,7 +14,7 @@ const AuthCard = ({ logo, children }) => (
       {logo}
     </Box>
 
-    <Box
+    <Stack
       w="full"
       maxW={{ sm: "md" }}
       mt={6}
@@ -24,8 +25,12 @@ const AuthCard = ({ logo, children }) => (
       overflow="hidden"
       rounded={{ sm: "lg" }}
     >
-      {children}
-    </Box>
+      <Box pb={4}>{children}</Box>
+      <Divider />
+      <HStack align={"center"} justify={"center"} gap={10} pt={4}>
+        <OAuthButtonGroup />
+      </HStack>
+    </Stack>
   </Stack>
 );
 
