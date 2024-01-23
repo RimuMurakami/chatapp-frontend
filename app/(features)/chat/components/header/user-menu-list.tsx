@@ -5,7 +5,11 @@ import { EditProfile } from "./edit-profile";
 import { AppSetting } from "./app-setting";
 import { Link } from "@chakra-ui/next-js";
 
+import { useAuth } from "@/app/hooks/auth";
+
 export function UserMenuList() {
+  const { logout } = useAuth();
+
   return (
     <Menu>
       <MenuButton
@@ -30,9 +34,9 @@ export function UserMenuList() {
           <AppSetting />
         </MenuItem>
         <MenuItem>
-          <Link href={"/"} flex={1}>
+          <Box onClick={logout} flex={1}>
             ログアウト
-          </Link>
+          </Box>
         </MenuItem>
       </MenuList>
     </Menu>
