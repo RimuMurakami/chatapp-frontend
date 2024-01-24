@@ -5,8 +5,12 @@ import { useChannels } from "../contexts/channel-context";
 import { Link } from "@chakra-ui/next-js";
 import { ChannelMenuList } from "./left-sidenav/channel-menu-list";
 import { useParams } from "next/navigation";
+import { useChat } from "../contexts/chat-context";
 
 export function LeftSideNav() {
+  // const chat = useChat();
+  // console.log(chat);
+
   let { id } = useParams();
   const paramId = (id ?? "0")[0];
 

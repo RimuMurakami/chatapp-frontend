@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { jsonServerInstance } from "../api/axios";
+// import { jsonServerInstance } from "../api/axios";
 
-const axios = jsonServerInstance;
+// const axios = jsonServerInstance;
 
 const MessageContext = createContext(null);
 const MessageDispatchContext = createContext(null);
