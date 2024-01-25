@@ -12,9 +12,10 @@ import { ChatMessage } from "./components/chat-message";
 import { useChat } from "./contexts/chat-context";
 
 export default function ChatApp() {
-  // ユーザ振り分けロジック
-  const chat = useChat();
-  console.log(chat);
+  // const chat = useChat();
+  // const username = user?.name;
+  // console.log(username);
+  // console.log(chat);
 
   // レイアウト関係
   const [isLeftSideNavVisible, setIsLeftSideNavVisible] = useState(true);

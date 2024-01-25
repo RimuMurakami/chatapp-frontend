@@ -17,7 +17,11 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
+import { useChat } from "../../contexts/chat-context";
+
 export function EditProfile() {
+  const { user } = useChat();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -42,24 +46,17 @@ export function EditProfile() {
           <ModalCloseButton />
           <ModalBody p={0} px={1}>
             <Box w={"100%"} h={40} bgColor={"blue.600"}>
-              <Avatar
-                name="Rechard Meatball"
-                src="/profile-icon/rechard.svg"
-                size={"xl"}
-                ml={3}
-                mt={3}
-                border={"3px solid white"}
-              />
+              <Avatar name={user?.name} src={""} size={"xl"} ml={3} mt={3} border={"3px solid white"} />
             </Box>
             <VStack h={"25rem"} align={"start"} p={4} gap={4}>
               <HStack justify={"space-between"} w={"100%"}>
-                <Heading size={"lg"}>Richard Meatball</Heading>
+                <Heading size={"lg"}>{user?.name}</Heading>
                 <Button>編集</Button>
               </HStack>
-              <Box>株式会社みとぼ</Box>
-              <Box>ChatApp ID: 123456</Box>
+              <Box>email: {user?.email}</Box>
+              <Box>ChatApp ID: {user?.id}</Box>
               <Divider />
-              <Box>よろしくお願いします。</Box>
+              <Box>{user?.introduction}</Box>
             </VStack>
           </ModalBody>
           <ModalFooter>
