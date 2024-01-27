@@ -9,6 +9,13 @@ import { useChannels } from "../contexts/channel-context";
 import { useUsers } from "../contexts/user-context";
 import { useChat } from "../contexts/chat-context";
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let formattedDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
+  let formattedTime = date.getHours() + "時" + date.getMinutes() + "分";
+  return formattedDate + " " + formattedTime;
+}
+
 export function ChatMessage() {
   const { channels } = useChat();
   const { id: channel_id } = useParams();
@@ -51,7 +58,7 @@ export function ChatMessage() {
                       <Avatar size={"sm"} name={message.user.name} />
                       <Box>{message.user.name}</Box>
                       <Spacer />
-                      <Box>{message.created_at}</Box>
+                      <Box>{formatDate(message.created_at)}</Box>
                     </HStack>
                     {/* message_text */}
                     <Box p={4}>
