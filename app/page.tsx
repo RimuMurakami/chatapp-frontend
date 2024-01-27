@@ -4,6 +4,7 @@ import { Link } from "@chakra-ui/next-js";
 import { Heading, Stack } from "@chakra-ui/react";
 
 import LoginLinks from "@/app/LoginLinks";
+import { useAuth } from "./hooks/auth";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <LoginLinks />
       <Stack justify={"center"} align={"center"} h={"100dvh"}>
         <Heading>
-          <Link href="/chat">ENTER CHAT APP</Link>
+          <Link href="/login">ENTER CHAT APP</Link>
         </Heading>
       </Stack>
     </>

@@ -11,6 +11,7 @@ import { useChat } from "../../contexts/chat-context";
 export function UserMenuList() {
   const { logout } = useAuth();
   const { user } = useChat();
+  // console.log(user);
 
   return (
     <Menu>
@@ -23,7 +24,7 @@ export function UserMenuList() {
         _hover={{ bgColor: "gray" }}
       >
         <HStack mr={"2"}>
-          <Avatar name={user.name} src="" size={"sm"} />
+          <Avatar name={user?.name} src="" size={"sm"} />
           <Text display={{ base: "none", lg: "Flex" }}>{user?.name}</Text>
           <IoSettingsOutline size="30px" />
         </HStack>

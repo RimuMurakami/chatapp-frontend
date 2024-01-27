@@ -1,3 +1,4 @@
+import Chat from "./chat";
 import { Providers } from "./providers/providers";
 
 import type { Metadata } from "next";
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Providers>{children}</Providers>
+      <Providers>
+        <Chat />
+        {children}
+      </Providers>
     </>
   );
 }
