@@ -20,6 +20,9 @@ import { useState } from "react";
 import { useDispatchMessages } from "../contexts/message-context";
 import { StampMenu } from "./text-input/stamp-menu";
 import { FileInput } from "./text-input/file-input";
+import { useChat } from "../contexts/chat-context";
+import { useParams } from "next/navigation";
+import axios from "@/app/lib/axios";
 
 export function TextInput({
   setIsLeftSideNavVisible,
@@ -31,25 +34,38 @@ export function TextInput({
 
   const dispatch = useDispatchMessages();
   const [enteredMessage, setEnteredMessage] = useState("");
+
+  const { user } = useChat();
+  const user_id = user?.id;
+
+  const { id: channel_id } = useParams();
+
   function sendMessage(e: React.FormEvent) {
     e.preventDefault();
-
     if (!enteredMessage) {
       return;
     }
 
     const newMessage = {
-      message_id: Math.floor(Math.random() * 1e10),
-      channel_id: 0,
-      user_id: 1,
-      text: enteredMessage,
-      timestamp: new Date().toLocaleString(),
-      message_type: "text",
+      channel_id: parseInt(channel_id[0]),
+      user_id: user_id,
+      message: enteredMessage,
+      type: "text",
     };
 
-    console.log(newMessage);
+    // POSTリクエストを送信
+    axios
+      .post("api/messages", newMessage)
+      .then((response) => {
+        // レスポンスを処理
+        console.log(response.data);
+        dispatch({ type: "message/add", message: response.data });
+      })
+      .catch((error) => {
+        // エラーを処理
+        console.error(error);
+      });
 
-    dispatch({ type: "message/add", message: newMessage });
     setEnteredMessage("");
   }
 

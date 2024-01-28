@@ -8,6 +8,8 @@ import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
 import { useUsers } from "../contexts/user-context";
 import { useChat } from "../contexts/chat-context";
+import axios from "@/app/lib/axios";
+import { useAuth } from "@/app/hooks/auth";
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -17,14 +19,17 @@ function formatDate(timestamp) {
 }
 
 export function ChatMessage() {
-  const { channels } = useChat();
-  const { id: channel_id } = useParams();
+  // const { channels } = useChat();
+  // const { id: channel_id } = useParams();
+  // const channel = channels?.find((channel) => channel.id == channel_id);
+  // const [messages, setMessages] = useState(channel?.messages);
 
-  const channel = channels?.find((channel) => channel.id == channel_id);
-  const messages = channel?.messages;
+  const { user } = useAuth();
+
+  const messages = useMessages();
+  const channel = messages[0]?.channel;
 
   const messagesEndRef = useRef(null);
-
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
   }, [messages]);
@@ -51,12 +56,11 @@ export function ChatMessage() {
           <Box marginTop={"auto"} w={"100%"}>
             {messages?.length > 0 ? (
               messages.map((message, i) => {
-                // const user = users.find((user) => user.user_id === message.user_id);
                 return (
                   <Box key={i} border={"1px solid"} borderColor={"gray.300"} rounded={"xl"} bgColor={"blue.50"}>
                     <HStack p={2} pb={0}>
-                      <Avatar size={"sm"} name={message.user.name} />
-                      <Box>{message.user.name}</Box>
+                      <Avatar size={"sm"} name={message.user?.name ?? user.name} />
+                      <Box>{message.user?.name ?? user.name}</Box>
                       <Spacer />
                       <Box>{formatDate(message.created_at)}</Box>
                     </HStack>

@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useReducer, useEffect } from "react";
 import axios from "@/app/lib/axios";
-import { redirect } from "next/navigation";
 
 const ChatContext = createContext(null);
 const ChatDispatchContext = createContext(null);
