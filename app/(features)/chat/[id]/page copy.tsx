@@ -5,10 +5,10 @@ import { useState, useEffect, useRef } from "react";
 import { useMessages, useDispatchMessages } from "@/app/(features)/chat/contexts/message-context";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useChannels } from "../../contexts/channel-context";
-import { useUsers } from "../../contexts/user-context";
+import { useChannels } from "../contexts/channel-context";
+import { useUsers } from "../contexts/user-context";
 
-export default function ChatMessage() {
+export default function Chat() {
   let { id } = useParams();
   id = id ?? "0";
   const messages = useMessages().filter((message) => message.channel_id === parseInt(id[0]));

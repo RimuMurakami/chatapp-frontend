@@ -1,14 +1,15 @@
 import { IoSettingsOutline } from "react-icons/io5";
-
 import { Menu, MenuButton, Button, MenuList, MenuItem, Avatar, HStack, Text, Box } from "@chakra-ui/react";
+
 import { EditProfile } from "./edit-profile";
 import { AppSetting } from "./app-setting";
-import { Link } from "@chakra-ui/next-js";
 
 import { useAuth } from "@/app/hooks/auth";
+import { useChat } from "../../contexts/chat-context";
 
 export function UserMenuList() {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
+  // const { user } = useChat();
 
   return (
     <Menu>
@@ -21,8 +22,8 @@ export function UserMenuList() {
         _hover={{ bgColor: "gray" }}
       >
         <HStack mr={"2"}>
-          <Avatar name="Rechard Meatball" src="/profile-icon/rechard.svg" size={"sm"} />
-          <Text display={{ base: "none", lg: "Flex" }}>Richard Meatball</Text>
+          <Avatar name={user?.name} src="" size={"sm"} />
+          <Text display={{ base: "none", lg: "Flex" }}>{user?.name}</Text>
           <IoSettingsOutline size="30px" />
         </HStack>
       </MenuButton>

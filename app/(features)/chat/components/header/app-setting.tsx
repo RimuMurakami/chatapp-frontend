@@ -35,7 +35,7 @@ export function AppSetting() {
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent maxW={"64dvw"}>
+        <ModalContent maxW={{ base: "100dvw", md: "64dvw" }}>
           <ModalHeader>環境設定</ModalHeader>
           <ModalCloseButton />
           <ModalBody>

@@ -5,8 +5,14 @@ import { Avatar, Box, Button, Flex, HStack, Input, Text, Textarea, VStack } from
 import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
 import { ColorModeSwitcher } from "./right-sidenav/color-mode-switch";
+import { useChat } from "../contexts/chat-context";
 
 export function RightSideNav() {
+  const { channels } = useChat();
+  const { id: channel_id } = useParams();
+
+  const channel = channels?.find((channel) => channel.id == channel_id);
+
   const [overview, setOverview] = useState("概要を入力");
   const [toggleOverview, setToggleOverview] = useState(false);
 
@@ -19,12 +25,9 @@ export function RightSideNav() {
       : "";
   }, [toggleOverview]);
 
-  let { id } = useParams();
-  id = id ?? "0";
-  const channel = useChannels().filter((channel) => channel.channel_id === parseInt(id[0]))[0];
   useEffect(() => {
-    setOverview(channel.overview);
-  }, [id]);
+    setOverview(channel?.overview);
+  }, [channel?.overview]);
 
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"}>

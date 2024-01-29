@@ -5,12 +5,15 @@ import { useChannels } from "../contexts/channel-context";
 import { Link } from "@chakra-ui/next-js";
 import { ChannelMenuList } from "./left-sidenav/channel-menu-list";
 import { useParams } from "next/navigation";
+import { useChat } from "../contexts/chat-context";
 
 export function LeftSideNav() {
+  const { channels } = useChat();
+
   let { id } = useParams();
   const paramId = (id ?? "0")[0];
 
-  const channels = useChannels();
+  // const channels = useChannels();
 
   const bgColor = useColorModeValue("blue.100", "blue.800");
 
@@ -26,21 +29,21 @@ export function LeftSideNav() {
       {/* channel title */}
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
         <VStack align={"start"} gap={0}>
-          {channels.map((channel) => {
+          {channels?.map((channel) => {
             return (
               <Link
-                href={`/chat/${channel.channel_id}`}
-                key={channel.channel_id}
+                href={`/chat/${channel.id}`}
+                key={channel.id}
                 _hover={{ textDecoration: "none", bg: bgColor }}
-                bg={parseInt(paramId) === channel.channel_id ? bgColor : "null"}
-                // border={parseInt(paramId) === channel.channel_id ? "2px solid" : "null"}
-                border={"2px solid"}
-                borderColor={parseInt(paramId) === channel.channel_id ? "blue.200" : "transparent"}
+                bg={parseInt(paramId) === channel.id ? bgColor : "null"}
+                border={parseInt(paramId) === channel.channel_id ? "2px solid" : "null"}
+                // border={"2px solid"}
+                borderColor={parseInt(paramId) === channel.id ? "blue.200" : "transparent"}
                 rounded={"md"}
               >
-                <HStack gap={3} p={2} py={3} width={"240px"} title={channel.channel_name}>
-                  <Avatar size={"sm"} src="/profile-icon/bob.svg" />
-                  <Text isTruncated>{channel.channel_name}</Text>
+                <HStack gap={3} p={2} py={3} width={"240px"} title={channel.name}>
+                  <Avatar size={"sm"} src="" />
+                  <Text isTruncated>{channel.name}</Text>
                 </HStack>
               </Link>
             );

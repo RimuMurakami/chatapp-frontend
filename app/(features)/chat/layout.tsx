@@ -1,5 +1,5 @@
+import Chat from "./chat";
 import { Providers } from "./providers/providers";
-import ChatGrid from "./components/chat-grid";
 
 import type { Metadata } from "next";
 
@@ -11,7 +11,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Providers>
-        <ChatGrid>{children}</ChatGrid>
+        <Chat />
+        {children}
       </Providers>
     </>
   );
