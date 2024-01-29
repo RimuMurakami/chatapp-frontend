@@ -26,6 +26,7 @@ import { useChat } from "../contexts/chat-context";
 import axios from "@/app/lib/axios";
 import { useAuth } from "@/app/hooks/auth";
 import { MessageMenu } from "./chat-message/message-menu";
+import { EditMessage } from "./chat-message/edit-message";
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -52,7 +53,8 @@ export function ChatMessage() {
 
   const dispatch = useDispatchMessages();
 
-  function handleEdit(message) {}
+  const [editToggle, setEditToggle] = useState(null);
+
   function handleDelete(message) {
     const deleteMessage = async () => {
       try {
@@ -93,7 +95,7 @@ export function ChatMessage() {
                     border={"1px solid"}
                     borderColor={"gray.100"}
                     rounded={"xl"}
-                    bgColor={"blue.0"}
+                    bgColor={editToggle === message?.id ? "blue.300" : ""}
                     _hover={{ bg: "blue.50", borderColor: "blue.100" }}
                     transition={"all 0.4s normal"}
                   >
@@ -102,25 +104,29 @@ export function ChatMessage() {
                       <Box>{message.user?.name ?? user.name}</Box>
                       <Spacer />
                       <Box>{formatDate(message.created_at)}</Box>
-                      <MessageMenu handleEdit={handleEdit} handleDelete={handleDelete} message={message} />
+                      <MessageMenu handleDelete={handleDelete} message={message} setEditToggle={setEditToggle} />
                     </HStack>
                     {/* message_text */}
-                    <Box p={4}>
-                      {message.type === "text" ? (
-                        <Text>
-                          {message.message.split("\n").map((line) => (
-                            <span key={line}>
-                              {line}
-                              <br />
-                            </span>
-                          ))}
-                        </Text>
-                      ) : message.type === "stamp" ? (
-                        <Image src={message.text} alt="stamp" width={100} height={100} />
-                      ) : (
-                        <Text>{message.message}</Text>
-                      )}
-                    </Box>
+                    {editToggle !== message.id ? (
+                      <Box p={4}>
+                        {message.type === "text" ? (
+                          <Text>
+                            {message.message.split("\n").map((line) => (
+                              <span key={line}>
+                                {line}
+                                <br />
+                              </span>
+                            ))}
+                          </Text>
+                        ) : message.type === "stamp" ? (
+                          <Image src={message.text} alt="stamp" width={100} height={100} />
+                        ) : (
+                          <Text>{message.message}</Text>
+                        )}
+                      </Box>
+                    ) : (
+                      <EditMessage message={message} setEditToggle={setEditToggle} />
+                    )}
                   </Box>
                 );
               })

@@ -16,7 +16,7 @@ const messageReducer = (messages, action) => {
     case "message/add":
       return [...messages, action.message];
 
-    case "message/edit":
+    case "message/update":
       return messages.map((message) => (message.id === action.message.id ? action.message : message));
 
     case "message/delete":

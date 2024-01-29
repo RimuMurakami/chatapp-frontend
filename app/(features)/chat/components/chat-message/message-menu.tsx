@@ -3,7 +3,7 @@ import { Menu, MenuList, MenuItem, MenuButton, Button, Box } from "@chakra-ui/re
 import { DeleteAlertDialog } from "./delete-alert-dialog";
 import { useAuth } from "@/app/hooks/auth";
 
-const MessageMenu = ({ message, handleEdit, handleDelete }) => {
+const MessageMenu = ({ message, handleDelete, setEditToggle }) => {
   const { user } = useAuth();
   return (
     <Menu closeOnSelect={true}>
@@ -11,9 +11,9 @@ const MessageMenu = ({ message, handleEdit, handleDelete }) => {
         <AiOutlineMore />
       </MenuButton>
       <MenuList minW={"100%"} p={0}>
-        {user.id === message.user.id ? (
+        {user.id === message.user?.id ? (
           <>
-            <MenuItem onClick={() => handleEdit(message)}>編集</MenuItem>
+            <MenuItem onClick={() => setEditToggle(message.id)}>編集</MenuItem>
             <DeleteAlertDialog handleDelete={handleDelete} message={message} />
             {/* <MenuItem onClick={() => handleDelete(message)}>削除</MenuItem> */}
           </>
