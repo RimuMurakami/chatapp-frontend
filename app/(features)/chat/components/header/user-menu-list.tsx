@@ -1,17 +1,15 @@
 import { IoSettingsOutline } from "react-icons/io5";
-
 import { Menu, MenuButton, Button, MenuList, MenuItem, Avatar, HStack, Text, Box } from "@chakra-ui/react";
+
 import { EditProfile } from "./edit-profile";
 import { AppSetting } from "./app-setting";
-import { Link } from "@chakra-ui/next-js";
 
 import { useAuth } from "@/app/hooks/auth";
 import { useChat } from "../../contexts/chat-context";
 
 export function UserMenuList() {
-  const { logout } = useAuth();
-  const { user } = useChat();
-  // console.log(user);
+  const { user, logout } = useAuth();
+  // const { user } = useChat();
 
   return (
     <Menu>

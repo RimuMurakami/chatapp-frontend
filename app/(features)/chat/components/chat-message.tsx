@@ -1,6 +1,21 @@
 "use client";
 
-import { Avatar, Box, Divider, HStack, Heading, Spacer, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Divider,
+  HStack,
+  Heading,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Spacer,
+  Text,
+  VStack,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 import { useMessages, useDispatchMessages } from "@/app/(features)/chat/contexts/message-context";
 import Image from "next/image";
@@ -10,6 +25,7 @@ import { useUsers } from "../contexts/user-context";
 import { useChat } from "../contexts/chat-context";
 import axios from "@/app/lib/axios";
 import { useAuth } from "@/app/hooks/auth";
+import { MessageMenu } from "./chat-message/message-menu";
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -34,6 +50,21 @@ export function ChatMessage() {
     messagesEndRef.current?.scrollIntoView();
   }, [messages]);
 
+  const dispatch = useDispatchMessages();
+
+  function handleEdit(message) {}
+  function handleDelete(message) {
+    const deleteMessage = async () => {
+      try {
+        const response = await axios.delete(`api/messages/${message.id}`);
+        dispatch({ type: "message/delete", id: response.data.id });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    deleteMessage();
+  }
+
   return (
     <>
       <VStack p={1} h={"calc(100dvh - 240px)"} color={"black"}>
@@ -55,20 +86,29 @@ export function ChatMessage() {
         <VStack overflowY={"scroll"} gap={1} h={"100%"} w={"100%"}>
           <Box marginTop={"auto"} w={"100%"}>
             {messages?.length > 0 ? (
-              messages.map((message, i) => {
+              messages.map((message) => {
                 return (
-                  <Box key={i} border={"1px solid"} borderColor={"gray.300"} rounded={"xl"} bgColor={"blue.50"}>
+                  <Box
+                    key={message.id}
+                    border={"1px solid"}
+                    borderColor={"gray.100"}
+                    rounded={"xl"}
+                    bgColor={"blue.0"}
+                    _hover={{ bg: "blue.50", borderColor: "blue.100" }}
+                    transition={"all 0.4s normal"}
+                  >
                     <HStack p={2} pb={0}>
                       <Avatar size={"sm"} name={message.user?.name ?? user.name} />
                       <Box>{message.user?.name ?? user.name}</Box>
                       <Spacer />
                       <Box>{formatDate(message.created_at)}</Box>
+                      <MessageMenu handleEdit={handleEdit} handleDelete={handleDelete} message={message} />
                     </HStack>
                     {/* message_text */}
                     <Box p={4}>
                       {message.type === "text" ? (
                         <Text>
-                          {message.message.split("\n").map((line, i) => (
+                          {message.message.split("\n").map((line) => (
                             <span key={line}>
                               {line}
                               <br />
