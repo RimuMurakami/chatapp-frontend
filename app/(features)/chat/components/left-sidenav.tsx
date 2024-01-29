@@ -18,11 +18,11 @@ export function LeftSideNav() {
   const bgColor = useColorModeValue("blue.100", "blue.800");
 
   return (
-    <Box m={1} maxH={"calc(100dvh - 40px)"}>
+    <Box m={1} maxH={"calc(100dvh - 40px)"} overflowY={"scroll"}>
       {/* nav title */}
-      <HStack px={1} h={12} borderBottom={"1px solid"} borderColor={"gray.400"}>
+      <HStack pl={"10px"} h={12} borderBottom={"1px solid"} borderColor={"gray.400"}>
         <Link href={"/chat"} _hover={{ bg: "blue.100" }}>
-          <IoHomeOutline size="32px" />
+          <IoHomeOutline size="28px" />
         </Link>
         <ChannelMenuList />
       </HStack>

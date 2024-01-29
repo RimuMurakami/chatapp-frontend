@@ -49,6 +49,7 @@ export function ChatMessage() {
   const messagesEndRef = useRef(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
+    // BUG: メッセージの新規投稿時、時刻横のmenulistが返信が表示される。おそらく新しいメッセージのuser_idが取得されていない。
   }, [messages]);
 
   const dispatch = useDispatchMessages();

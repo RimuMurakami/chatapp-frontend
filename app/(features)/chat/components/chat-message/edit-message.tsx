@@ -36,8 +36,10 @@ export function EditMessage({ message, setEditToggle }) {
         />
         <HStack pr={"2"}>
           <Spacer />
-          <Button onClick={() => setEditToggle(false)}>キャンセル</Button>
-          <Button onClick={() => handleUpdateMessage(message)} colorScheme={"twitter"}>
+          <Button onClick={() => setEditToggle(false)} size={"sm"}>
+            キャンセル
+          </Button>
+          <Button onClick={() => handleUpdateMessage(message)} size={"sm"} colorScheme={"twitter"}>
             保存する
           </Button>
         </HStack>
