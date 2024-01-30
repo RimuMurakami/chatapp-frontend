@@ -10,18 +10,28 @@ export function EditMessage({ message, setEditToggle }) {
   const rows = editMessage.split("\n").length;
 
   const dispatch = useDispatchMessages();
-  function handleUpdateMessage(message) {
-    const fetchMessage = async () => {
-      try {
-        const updateMessage = { ...message, message: editMessage };
-        const response = await axios.put(`api/messages/${message.id}`, updateMessage);
-        dispatch({ type: "message/update", message: response.data });
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchMessage();
-    setEditToggle(false);
+  //   function handleUpdateMessage(message) {
+  //     const fetchMessage = async () => {
+  //       try {
+  //         const updateMessage = { ...message, message: editMessage };
+  //         const response = await axios.put(`api/messages/${message.id}`, updateMessage);
+  //         dispatch({ type: "message/update", message: response.data });
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     };
+  //     fetchMessage();
+  //     setEditToggle(false);
+  //   }
+  async function handleUpdateMessage(message) {
+    try {
+      const updateMessage = { ...message, message: editMessage };
+      const response = await axios.put(`api/messages/${message.id}`, updateMessage);
+      dispatch({ type: "message/update", message: response.data });
+      setEditToggle(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

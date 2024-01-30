@@ -60,13 +60,12 @@ export function TextInput({
         // レスポンスを処理
         console.log(response.data);
         dispatch({ type: "message/add", message: response.data });
+        setEnteredMessage("");
       })
       .catch((error) => {
         // エラーを処理
         console.error(error);
       });
-
-    setEnteredMessage("");
   }
 
   const templateColumns = useBreakpointValue({
