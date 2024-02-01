@@ -22,7 +22,7 @@ export function LeftSideNav() {
   const hoverColor = useColorModeValue("blue.200", "blue.600");
 
   return (
-    <Box m={1} maxH={"calc(100dvh - 40px)"} overflowY={"scroll"}>
+    <Box m={1} maxH={"calc(100dvh - 40px)"}>
       {/* nav title */}
       <HStack pl={"10px"} h={12} borderBottom={"1px solid"} borderColor={"gray.400"}>
         <Link href={"/chat"} _hover={{ bg: "blue.100" }}>
@@ -32,7 +32,7 @@ export function LeftSideNav() {
       </HStack>
       {/* channel title */}
       <VStack pt={4} justify={"space-between"} align={"start"} h={"calc(100dvh - 40px - 64px)"}>
-        <VStack align={"start"} gap={0}>
+        <VStack align={"start"} gap={0} overflowY={"scroll"}>
           {channels?.length > 0 ? (
             channels?.map((channel) => {
               return (
