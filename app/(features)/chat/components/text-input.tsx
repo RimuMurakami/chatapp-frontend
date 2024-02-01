@@ -47,7 +47,7 @@ export function TextInput({
     }
 
     const newMessage = {
-      channel_id: parseInt(channel_id[0]),
+      channel_id: channel_id,
       user_id: user_id,
       message: enteredMessage,
       type: "text",

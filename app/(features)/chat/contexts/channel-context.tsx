@@ -1,55 +1,26 @@
 "use client";
 
-import { createContext, useContext, useReducer } from "react";
+import { useAuth } from "@/app/hooks/auth";
+import axios from "@/app/lib/axios";
+import { useParams } from "next/navigation";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const ChannelContext = createContext(null);
 const ChannelDispatchContext = createContext(null);
 
-const sampleData = [
-  {
-    channel_id: 0,
-    channel_name: "マイチャンネル",
-    overview: "自分の概要",
-  },
-  {
-    channel_id: 1,
-    channel_name: "佐藤のチャンネル",
-    overview: "さとーです",
-  },
-  {
-    channel_id: 2,
-    channel_name: "田中 悟",
-    overview: "たなかの島",
-  },
-  {
-    channel_id: 3,
-    channel_name: "新規開発プロジェクトについて",
-    overview: "頑張りましょう",
-  },
-  {
-    channel_id: 4,
-    channel_name: "Smith",
-    overview: "Hi",
-  },
-  {
-    channel_id: 5,
-    channel_name: "涼宮",
-    overview: "くぎゅ",
-  },
-  {
-    channel_id: 6,
-    channel_name: "中村",
-    overview: "うお",
-  },
-];
-
 const channelReducer = (channels, action) => {
   switch (action.type) {
-    // case "channel/init":
-    //   return [...action.channels];
+    case "channel/init":
+      return [...action.channels];
 
     case "channel/add":
       return [...channels, action.channel];
+
+    case "channel/update":
+      return channels.map((channel) => (channel.id === action.channel.id ? action.channel : channel));
+
+    case "channel/delete":
+      return channels.filter((channel) => channel.id !== action.id);
 
     default:
       return channels;
@@ -57,7 +28,22 @@ const channelReducer = (channels, action) => {
 };
 
 const ChannelProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(channelReducer, sampleData);
+  const [state, dispatch] = useReducer(channelReducer, []);
+
+  useEffect(() => {
+    const fetchChannel = async () => {
+      try {
+        const response = await axios.get(`api/channels`);
+        console.log(response.data);
+        dispatch({ type: "channel/init", channels: response.data });
+      } catch (error) {
+        console.error(error);
+        alert("チャンネル取得エラー");
+      }
+    };
+    fetchChannel();
+  }, []);
+
   return (
     <ChannelContext.Provider value={state}>
       <ChannelDispatchContext.Provider value={dispatch}>{children}</ChannelDispatchContext.Provider>

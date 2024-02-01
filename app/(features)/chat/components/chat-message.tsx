@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Divider,
+  Flex,
   HStack,
   Heading,
   Menu,
@@ -49,7 +50,6 @@ export function ChatMessage() {
   const messagesEndRef = useRef(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
-    // BUG: メッセージの新規投稿時、時刻横のmenulistが返信が表示される。おそらく新しいメッセージのuser_idが取得されていない。
   }, [messages]);
 
   const dispatch = useDispatchMessages();
@@ -112,8 +112,8 @@ export function ChatMessage() {
                       <Box p={4}>
                         {message.type === "text" ? (
                           <Text>
-                            {message.message.split("\n").map((line) => (
-                              <span key={line}>
+                            {message.message.split("\n").map((line, i) => (
+                              <span key={i}>
                                 {line}
                                 <br />
                               </span>
@@ -132,7 +132,7 @@ export function ChatMessage() {
                 );
               })
             ) : (
-              <h1>読み込み中...</h1>
+              <Flex justify={"center"}>まだメッセージがありません...</Flex>
             )}
             <Box ref={messagesEndRef} />
           </Box>

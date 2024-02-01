@@ -36,7 +36,7 @@ const MessageProvider = ({ children }) => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get(`api/messages/${channel_id}`);
-        // console.log(response);
+        // console.log(response.data);
         dispatch({ type: "message/init", messages: response.data });
       } catch (error) {
         console.error(error);

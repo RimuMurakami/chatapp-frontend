@@ -2,7 +2,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 import { Menu, MenuButton, Button, MenuList, MenuItem, Avatar, HStack, Text, Box } from "@chakra-ui/react";
 
-export function ChannelMenuList() {
+export function FilterChannels() {
   return (
     <Menu>
       <MenuButton p={0} fontWeight={"normal"}>
