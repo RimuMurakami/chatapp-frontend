@@ -11,7 +11,7 @@ const MessageMenu = ({ message, handleDelete, setEditToggle }) => {
         <AiOutlineMore />
       </MenuButton>
       <MenuList minW={"100%"} p={0}>
-        {user.id === message.user?.id ? (
+        {user.id === message.user_id ? (
           <>
             <MenuItem onClick={() => setEditToggle(message.id)}>編集</MenuItem>
             <DeleteAlertDialog handleDelete={handleDelete} message={message} />
