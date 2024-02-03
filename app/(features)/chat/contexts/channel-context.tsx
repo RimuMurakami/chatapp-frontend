@@ -34,7 +34,7 @@ const ChannelProvider = ({ children }) => {
     const fetchChannel = async () => {
       try {
         const response = await axios.get(`api/channels`);
-        console.log(response.data);
+        // console.log(response.data);
         dispatch({ type: "channel/init", channels: response.data });
       } catch (error) {
         console.error(error);

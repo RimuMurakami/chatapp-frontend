@@ -9,7 +9,7 @@ import { useChat } from "../contexts/chat-context";
 import axios from "@/app/lib/axios";
 
 export function RightSideNav() {
-  const { channels } = useChat();
+  const channels = useChannels();
   const { id: channel_id } = useParams();
   const channel = channels?.find((channel) => channel.id == channel_id);
 
@@ -94,7 +94,15 @@ export function RightSideNav() {
             </>
           ) : (
             // 通常時
-            <Text pl={2}>{overview}</Text>
+            // <Text pl={2}>{overview}</Text>
+            <Text pl={2}>
+              {overview?.split("\n").map((line, i) => (
+                <span key={i}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </Text>
           )}
         </Box>
       </Box>
