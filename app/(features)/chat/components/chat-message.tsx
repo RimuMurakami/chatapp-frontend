@@ -120,7 +120,7 @@ export function ChatMessage() {
                             ))}
                           </Text>
                         ) : message.type === "stamp" ? (
-                          <Image src={message.text} alt="stamp" width={100} height={100} />
+                          <Image src={message.message} key={message.message} alt="stamp" width={100} height={100} />
                         ) : (
                           <Text>{message.message}</Text>
                         )}

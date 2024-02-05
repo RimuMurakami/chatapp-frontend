@@ -1,13 +1,15 @@
 "use client";
 
 import { Grid, GridItem, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "./components/header";
 import { LeftSideNav } from "./components/left-sidenav";
 import { RightSideNav } from "./components/right-sidenav";
 import { TextInput } from "./components/text-input";
 import { ChatMessage } from "./components/chat-message";
+
+// import "./lib/websockets";
 
 export default function Chat() {
   // レイアウト関係

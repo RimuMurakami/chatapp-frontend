@@ -16,13 +16,15 @@ import {
   Textarea,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import { useDispatchMessages } from "../contexts/message-context";
 import { StampMenu } from "./text-input/stamp-menu";
 import { FileInput } from "./text-input/file-input";
 import { useChat } from "../contexts/chat-context";
 import { useParams } from "next/navigation";
 import axios from "@/app/lib/axios";
+import { Websockets } from "../lib/websockets";
 
 export function TextInput({
   setIsLeftSideNavVisible,
@@ -53,17 +55,14 @@ export function TextInput({
       type: "text",
     };
 
-    // POSTリクエストを送信
     axios
       .post("api/messages", newMessage)
       .then((response) => {
-        // レスポンスを処理
-        console.log(response.data);
-        dispatch({ type: "message/add", message: response.data });
+        // BUG: websocketのブロードキャストで自身を除外できない。X-Socket-IDが問題と思われる。取り急ぎ下記をコメントアウトでカバー。
+        // dispatch({ type: "message/add", message: response.data });
         setEnteredMessage("");
       })
       .catch((error) => {
-        // エラーを処理
         console.error(error);
       });
   }
@@ -76,6 +75,7 @@ export function TextInput({
 
   return (
     <>
+      <Websockets />
       <Grid
         templateAreas={`"leftArrow top rightArrow "
                   "leftArrow textInput rightArrow"`}

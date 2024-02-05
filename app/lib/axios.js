@@ -1,12 +1,28 @@
-import Axios from 'axios'
+import Axios from "axios";
+
+import Echo from "laravel-echo";
 
 const axios = Axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
-    headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-    },
-    withCredentials: true,
-    withXSRFToken: true
-})
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+    // "X-Socket-ID": Echo.socketId(),
+  },
+  withCredentials: true,
+  withXSRFToken: true,
+});
 
-export default axios
+// axios.interceptors.request.use(
+//   (config) => {
+//     console.log(Echo.socketId);
+//     if (Echo.socketId) {
+//       config.headers["X-Socket-ID"] = Echo.socketId();
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
+
+export default axios;

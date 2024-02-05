@@ -19,6 +19,9 @@ import {
   Box,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useAuth } from "@/app/hooks/auth";
+import { useParams } from "next/navigation";
+import axios from "@/app/lib/axios";
 
 export function StampMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,13 +32,32 @@ export function StampMenu() {
     </Button>
   ));
 
+  const { user } = useAuth();
+  const { id: channel_id } = useParams();
+
   const dispatch = useDispatchMessages();
   const handleStamp = (e) => {
-    console.log(e.target.src);
-    dispatch({
-      type: "message/add",
-      message: { channel_id: 0, text: e.target.src, message_type: "stamp", timestamp: new Date().toLocaleString() },
-    });
+    const newStamp = {
+      channel_id: channel_id,
+      user_id: user?.id,
+      message: e.target.src,
+      type: "stamp",
+    };
+
+    axios
+      .post("api/messages", newStamp)
+      .then((res) => {
+        console.log(res.data);
+        // dispatch({ type: "message/add", message: res.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    // dispatch({
+    //   type: "message/add",
+    //   message: { channel_id: 0, text: e.target.src, message_type: "stamp", timestamp: new Date().toLocaleString() },
+    // });
     onClose(); // Popoverを閉じる
   };
 
