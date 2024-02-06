@@ -5,10 +5,10 @@ import { Avatar, Badge, Box, Button, Flex, HStack, Input, Text, Textarea, VStack
 import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
 import { ColorModeSwitcher } from "./right-sidenav/color-mode-switch";
-import { useChat } from "../contexts/chat-context";
 import axios from "@/app/lib/axios";
 import { NewTask } from "./right-sidenav/NewTask";
 import { useAuth } from "@/app/hooks/auth";
+import { TaskCompleteToast } from "./right-sidenav/TaskCompleteToast";
 
 export function RightSideNav() {
   const channels = useChannels();
@@ -72,11 +72,11 @@ export function RightSideNav() {
       .delete(`api/tasks/${task_id}`)
       .then((res) => {
         setTasks(tasks.filter((task) => task.id !== task_id));
-        // console.log(res.data);
       })
       .catch((err) => {
         console.error(err);
       });
+    // alert("タスク完了");
   }
 
   return (
@@ -162,9 +162,11 @@ export function RightSideNav() {
                 {task.task}
               </Box>
               {user.id === task.user?.id ? (
-                <Button colorScheme={"blue"} variant={"outline"} size={"xs"} onClick={() => handleComplete(task.id)}>
-                  完了
-                </Button>
+                <>
+                  <Button colorScheme={"blue"} variant={"outline"} size={"xs"} onClick={() => handleComplete(task.id)}>
+                    <TaskCompleteToast />
+                  </Button>
+                </>
               ) : (
                 <></>
               )}
