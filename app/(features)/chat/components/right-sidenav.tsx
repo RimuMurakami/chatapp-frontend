@@ -1,12 +1,14 @@
 import { LuPencilLine, LuPlus } from "react-icons/lu";
 
 import { useState, useRef, useEffect } from "react";
-import { Avatar, Box, Button, Flex, HStack, Input, Text, Textarea, VStack, flexbox } from "@chakra-ui/react";
+import { Avatar, Badge, Box, Button, Flex, HStack, Input, Text, Textarea, VStack, flexbox } from "@chakra-ui/react";
 import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
 import { ColorModeSwitcher } from "./right-sidenav/color-mode-switch";
 import { useChat } from "../contexts/chat-context";
 import axios from "@/app/lib/axios";
+import { NewTask } from "./right-sidenav/NewTask";
+import { useAuth } from "@/app/hooks/auth";
 
 export function RightSideNav() {
   const channels = useChannels();
@@ -47,6 +49,35 @@ export function RightSideNav() {
   }, [channel?.overview]);
 
   const rows = overview?.split("\n").length;
+
+  const [toggleCreateTask, setToggleCreateTask] = useState(false);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`api/tasks/${channel_id}`)
+      .then((res) => {
+        // console.log(res.data);
+        setTasks(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [channel_id]);
+
+  const { user } = useAuth();
+
+  function handleComplete(task_id) {
+    axios
+      .delete(`api/tasks/${task_id}`)
+      .then((res) => {
+        setTasks(tasks.filter((task) => task.id !== task_id));
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"} overflowY={"scroll"}>
@@ -109,18 +140,37 @@ export function RightSideNav() {
       <Box>
         <HStack p={1} mt={8} h={12} justify={"space-between"} borderTop={"1px solid"} borderColor={"gray.300"}>
           <Text>タスク</Text>
-          <Button p={0}>
+          <Button p={0} onClick={() => setToggleCreateTask(true)}>
             <LuPlus size="24px" />
           </Button>
         </HStack>
-        <HStack p={3} pl={2} mt={2} bgColor={"white"}>
-          <Box w={"100%"} overflow={"auto"}>
-            ここにタスク
+        {toggleCreateTask ? (
+          <NewTask setToggleCreateTask={setToggleCreateTask} tasks={tasks} setTasks={setTasks} />
+        ) : (
+          ""
+        )}
+        {tasks.map((task) => (
+          <Box bgColor={"white"} my={2} key={task.id}>
+            <Badge
+              colorScheme={user.id === task.user?.id ? "teal" : "purple"}
+              variant={user.id === task.user?.id ? "solid" : "outline"}
+            >
+              {task.user.name} のタスク
+            </Badge>
+            <HStack p={3} pl={2} mt={2}>
+              <Box w={"100%"} overflow={"auto"}>
+                {task.task}
+              </Box>
+              {user.id === task.user?.id ? (
+                <Button colorScheme={"blue"} variant={"outline"} size={"xs"} onClick={() => handleComplete(task.id)}>
+                  完了
+                </Button>
+              ) : (
+                <></>
+              )}
+            </HStack>
           </Box>
-          <Button colorScheme={"blue"} size={"sm"}>
-            完了
-          </Button>
-        </HStack>
+        ))}
       </Box>
       <ColorModeSwitcher />
     </Box>

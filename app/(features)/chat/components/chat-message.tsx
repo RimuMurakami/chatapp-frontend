@@ -16,10 +16,12 @@ import {
   Text,
   VStack,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 import { useMessages, useDispatchMessages } from "@/app/(features)/chat/contexts/message-context";
-import Image from "next/image";
+// import Image from "next/image";
+
 import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
 import { useUsers } from "../contexts/user-context";
@@ -120,7 +122,7 @@ export function ChatMessage() {
                             ))}
                           </Text>
                         ) : message.type === "stamp" ? (
-                          <Image src={message.message} key={message.message} alt="stamp" width={100} height={100} />
+                          <Image src={message.message} key={message.message} alt="stamp" width={100} height={"auto"} />
                         ) : (
                           <Text>{message.message}</Text>
                         )}

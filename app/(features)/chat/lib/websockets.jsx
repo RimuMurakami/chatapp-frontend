@@ -18,7 +18,7 @@ export function Websockets() {
     });
 
     const channel = window.Echo.channel("my-channel");
-    channel.listen(".my-event", function (data) {
+    channel.listen("StoreMessage", function (data) {
       // console.log(JSON.stringify(data));
       // console.log(data.message);
       dispatch({ type: "message/add", message: data.message });
