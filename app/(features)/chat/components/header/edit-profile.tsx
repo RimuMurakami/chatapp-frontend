@@ -54,7 +54,7 @@ export function EditProfile() {
     setToggleEdit(false);
     setUsername(user?.name);
     setIntroduction(user?.introduction);
-    // onClose();
+    onClose();
   }
 
   useEffect(() => {

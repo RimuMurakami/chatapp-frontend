@@ -67,7 +67,6 @@ export function CreateChannel() {
         dispatch({ type: "channel/add", channel: response.data });
         setChannelName("");
         setChannelOverview("");
-        // console.log(response.data.id);
         onClose();
         router.push(`/chat/${response.data.id}`);
       } catch (error) {
