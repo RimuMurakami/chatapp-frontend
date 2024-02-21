@@ -1,3 +1,28 @@
+# Chat App (Frontend)
+
+Laravel と Nextjs の技術習得のため、チャットアプリを個人開発しています。
+
+## 参考動画
+
+ここに動画
+
+### Backend API Server
+
+https://github.com/RimuMurakami/chatapp-backend
+
+- 現状、実務運用には耐えられない(下記が未実装)
+  - 認可ロジック
+  - リクエストのバリデーション
+  - メールサーバー
+  - エラーハンドリング等
+
+## 開発環境に必要な外部 API 等
+
+- GoogleAuth
+- Pusher
+
+<br><br><br><br><br>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
