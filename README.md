@@ -6,17 +6,21 @@ Laravel と Nextjs の技術習得のため、チャットアプリを個人開�
 
 ここに動画
 
-### Backend API Server
-
+Backend API Server の URL
+<br>
 https://github.com/RimuMurakami/chatapp-backend
 
-- 現状、実務運用には耐えられない(下記が未実装)
+- 現状は実務運用には耐えられない(下記が未実装)
   - 認可ロジック
   - リクエストのバリデーション
   - メールサーバー
   - エラーハンドリング等
+  <hr>
+- 今後の予定
+  - 上記の実装
+  - フロントエンドコードの Typescript によるリファクタリング
 
-## 開発環境に必要な外部 API 等
+## 動作確認に必要な外部 API 等
 
 - GoogleAuth
 - Pusher
