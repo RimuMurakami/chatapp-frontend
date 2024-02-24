@@ -25,6 +25,11 @@ https://github.com/RimuMurakami/chatapp-backend
 - GoogleAuth
 - Pusher
 
+## ER図
+
+![chat-app-ER](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/28887a64-9c9a-495f-8c76-b1f2a5726c3b)
+
+
 <br><br><br><br><br><hr>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
