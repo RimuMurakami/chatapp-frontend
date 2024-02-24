@@ -1,11 +1,16 @@
 # Chat App (Frontend)
 
 Laravel と Nextjs の技術習得のため、チャットアプリを個人開発しています。
-<br><br>
-### アプリのデモ動画
+
+<img width="1279" alt="chat-app-img" src="https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/d371f38d-b85c-4053-86e0-48979c1787ea">
+
+
+<br><br><br><br>
+### アプリのデモ動画URL(ファイル容量大のため、ローカルにて再生可能)
 
 https://github.com/RimuMurakami/chatapp-frontend/blob/main/ChatApp-DemoMovie-Github%E7%94%A8.mp4
-<br><br><br>
+
+<br><br><br><br>
 Backend API Server の URL
 <br>
 https://github.com/RimuMurakami/chatapp-backend
