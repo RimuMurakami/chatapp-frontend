@@ -10,7 +10,6 @@ import {
   Button,
   Box,
   VStack,
-  Textarea,
   Input,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";

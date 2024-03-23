@@ -1,7 +1,7 @@
 import { LuPencilLine, LuPlus } from "react-icons/lu";
 
 import { useState, useRef, useEffect } from "react";
-import { Avatar, Badge, Box, Button, Flex, HStack, Input, Text, Textarea, VStack, flexbox } from "@chakra-ui/react";
+import { Badge, Box, Button, HStack, Text, Textarea } from "@chakra-ui/react";
 import { useParams } from "next/navigation";
 import { useChannels } from "../contexts/channel-context";
 import { ColorModeSwitcher } from "./right-sidenav/color-mode-switch";

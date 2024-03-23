@@ -2,21 +2,18 @@ import { CiVideoOn } from "react-icons/ci";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { BsSend } from "react-icons/bs";
 import {
-  Box,
   Button,
   Checkbox,
-  Divider,
   Flex,
   FormControl,
   Grid,
   GridItem,
   HStack,
-  Input,
   Spacer,
   Textarea,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { useDispatchMessages } from "../contexts/message-context";
 import { StampMenu } from "./text-input/stamp-menu";

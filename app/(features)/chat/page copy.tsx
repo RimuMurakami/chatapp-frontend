@@ -9,8 +9,6 @@ import { RightSideNav } from "./components/right-sidenav";
 import { TextInput } from "./components/text-input";
 import { ChatMessage } from "./components/chat-message";
 
-import { useChat } from "./contexts/chat-context";
-
 export default function ChatApp() {
   // レイアウト関係
   const [isLeftSideNavVisible, setIsLeftSideNavVisible] = useState(true);

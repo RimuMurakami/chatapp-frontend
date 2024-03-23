@@ -8,11 +8,8 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
-  HStack,
-  Avatar,
   Text,
   Box,
-  Divider,
 } from "@chakra-ui/react";
 
 export function AppSetting() {

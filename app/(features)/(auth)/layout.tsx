@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import AuthCard from "@/app/(features)/(auth)/AuthCard";
 import ApplicationLogo from "@/app/(features)/(auth)/components/ApplicationLogo";
+import { Box } from "@chakra-ui/react";
 
 export const metadata: Metadata = {
   title: "Login",

@@ -9,12 +9,8 @@ import {
   useDisclosure,
   Button,
   HStack,
-  Avatar,
   Text,
   Box,
-  VStack,
-  Divider,
-  Heading,
   Input,
 } from "@chakra-ui/react";
 

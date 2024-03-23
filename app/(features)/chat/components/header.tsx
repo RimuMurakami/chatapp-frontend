@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, FormLabel, HStack, Input, TagLabel, Text } from "@chakra-ui/react";
+import { Box, HStack, Input, Text } from "@chakra-ui/react";
 import { MdOutlineSearch } from "react-icons/md";
 import { UserMenuList } from "./header/user-menu-list";
 import { Link } from "@chakra-ui/next-js";

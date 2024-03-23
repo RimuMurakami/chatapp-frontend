@@ -1,31 +1,10 @@
 "use client";
 
-import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  Flex,
-  HStack,
-  Heading,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Spacer,
-  Text,
-  VStack,
-  useDisclosure,
-  Image,
-} from "@chakra-ui/react";
+import { Avatar, Box, Flex, HStack, Heading, Spacer, Text, VStack, Image } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 import { useMessages, useDispatchMessages } from "@/app/(features)/chat/contexts/message-context";
 // import Image from "next/image";
 
-import { useParams } from "next/navigation";
-import { useChannels } from "../contexts/channel-context";
-import { useUsers } from "../contexts/user-context";
-import { useChat } from "../contexts/chat-context";
 import axios from "@/app/lib/axios";
 import { useAuth } from "@/app/hooks/auth";
 import { MessageMenu } from "./chat-message/message-menu";
@@ -39,11 +18,6 @@ function formatDate(timestamp) {
 }
 
 export function ChatMessage() {
-  // const { channels } = useChat();
-  // const { id: channel_id } = useParams();
-  // const channel = channels?.find((channel) => channel.id == channel_id);
-  // const [messages, setMessages] = useState(channel?.messages);
-
   const { user } = useAuth();
 
   const messages = useMessages();

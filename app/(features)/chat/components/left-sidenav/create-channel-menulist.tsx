@@ -1,5 +1,4 @@
 import { Menu, MenuList, MenuItem, MenuButton, Button, Box } from "@chakra-ui/react";
-import { useAuth } from "@/app/hooks/auth";
 import { CreateChannel } from "./create-channel";
 import { AddUser } from "./add-user";
 

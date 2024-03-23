@@ -5,11 +5,9 @@ import { EditProfile } from "./edit-profile";
 import { AppSetting } from "./app-setting";
 
 import { useAuth } from "@/app/hooks/auth";
-import { useChat } from "../../contexts/chat-context";
 
 export function UserMenuList() {
   const { user, logout } = useAuth();
-  // const { user } = useChat();
 
   return (
     <Menu>

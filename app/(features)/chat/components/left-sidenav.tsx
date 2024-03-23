@@ -1,29 +1,13 @@
 import { IoHomeOutline } from "react-icons/io5";
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Spacer,
-  Text,
-  VStack,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { CreateChannel } from "./left-sidenav/create-channel";
-import { useChannels, useDispatchChannels } from "../contexts/channel-context";
+import { Avatar, AvatarGroup, Box, HStack, Spacer, Text, VStack, useColorModeValue } from "@chakra-ui/react";
+import { useChannels } from "../contexts/channel-context";
 import { Link } from "@chakra-ui/next-js";
 import { FilterChannels } from "./left-sidenav/filter-channels";
 import { useParams } from "next/navigation";
-import { useChat } from "../contexts/chat-context";
 import { CreateChannelMenulist } from "./left-sidenav/create-channel-menulist";
-import { useEffect } from "react";
-import axios from "@/app/lib/axios";
 import { ChannelMenu } from "./left-sidenav/channel-menu";
 
 export function LeftSideNav() {
-  // const { channels } = useChat();
   const channels = useChannels();
 
   let { id: channel_id } = useParams();
@@ -31,8 +15,6 @@ export function LeftSideNav() {
 
   const bgColor = useColorModeValue("blue.100", "blue.800");
   const hoverColor = useColorModeValue("blue.200", "blue.600");
-
-  // console.log(channels);
 
   return (
     <Box m={0} maxH={"calc(100dvh - 40px)"}>
