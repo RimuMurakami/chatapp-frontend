@@ -2,14 +2,19 @@
 
 Laravel と Nextjs の技術習得のため、チャットアプリを個人開発しています。
 
-## 参考動画
+<img width="1279" alt="chat-app-img" src="https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/d371f38d-b85c-4053-86e0-48979c1787ea">
 
-ここに動画
 
+<br><br><br><br>
+### アプリのデモ動画URL(ファイル容量大のため、ローカルにて再生可能)
+
+https://github.com/RimuMurakami/chatapp-frontend/blob/main/ChatApp-DemoMovie-Github%E7%94%A8.mp4
+
+<br><br><br><br>
 Backend API Server の URL
 <br>
 https://github.com/RimuMurakami/chatapp-backend
-
+<br><br>
 - 現状は実務運用には耐えられない(下記が未実装)
   - 認可ロジック
   - リクエストのバリデーション
@@ -25,7 +30,12 @@ https://github.com/RimuMurakami/chatapp-backend
 - GoogleAuth
 - Pusher
 
-<br><br><br><br><br>
+## ER図
+
+![chat-app-ER](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/28887a64-9c9a-495f-8c76-b1f2a5726c3b)
+
+
+<br><br><br><br><br><hr>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
