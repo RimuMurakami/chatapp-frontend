@@ -9,7 +9,7 @@ const providers = [
   {
     name: "Google",
     icon: (
-      <Link href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`}>
+      <Link href={`${process.env.BACKEND_URL}/auth/google`}>
         <GoogleIcon color={"orange"} />
       </Link>
     ),
@@ -26,17 +26,17 @@ export const OAuthButtonGroup = () => (
         {icon}
       </Button>
     ))} */}
-    <Link href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`}>
+    <Link href={`${process.env.BACKEND_URL}/auth/google`}>
       <Button flexGrow={1} variant={"outline"} size={"lg"} w={100}>
         <GoogleIcon color={"orange"} />
       </Button>
     </Link>
-    {/* <Link href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`}>
+    {/* <Link href={`${process.env.BACKEND_URL}/auth/google`}>
       <Button flexGrow={1} variant={"outline"} size={"lg"} w={100} disabled>
         <TwitterIcon color={"blue"} />
       </Button>
     </Link>
-    <Link href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`}>
+    <Link href={`${process.env.BACKEND_URL}/auth/google`}>
       <Button flexGrow={1} variant={"outline"} size={"lg"} w={100}>
         <GitHubIcon color={""} />
       </Button>
