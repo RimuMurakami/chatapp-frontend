@@ -23,18 +23,24 @@ import axios from "@/app/lib/axios";
 import { Websockets } from "../lib/websockets";
 import { useAuth } from "@/app/hooks/auth";
 
+type TextInputProps = {
+  isLeftSideNavVisible: boolean;
+  setIsLeftSideNavVisible: (value: boolean) => void;
+  isRightSideNavVisible: boolean;
+  setIsRightSideNavVisible: (value: boolean) => void;
+};
+
 export function TextInput({
-  setIsLeftSideNavVisible,
   isLeftSideNavVisible,
+  setIsLeftSideNavVisible,
   isRightSideNavVisible,
   setIsRightSideNavVisible,
-}) {
+}: TextInputProps) {
   const [isEnterToSend, setIsEnterToSend] = useState(false);
 
   const dispatch = useDispatchMessages();
   const [enteredMessage, setEnteredMessage] = useState("");
 
-  // const { user } = useChat();
   const { user } = useAuth();
   const user_id = user?.id;
 
@@ -92,7 +98,7 @@ export function TextInput({
             h={"100%"}
             align={"center"}
             _hover={{ bgColor: "blue.50" }}
-            onClick={() => setIsLeftSideNavVisible((prev) => !prev)}
+            onClick={() => setIsLeftSideNavVisible(!isLeftSideNavVisible)}
             cursor={"pointer"}
           >
             {isLeftSideNavVisible ? <MdKeyboardDoubleArrowLeft /> : <MdKeyboardDoubleArrowRight />}
@@ -121,7 +127,7 @@ export function TextInput({
             h={"100%"}
             align={"center"}
             _hover={{ bgColor: "blue.50" }}
-            onClick={() => setIsRightSideNavVisible((prev) => !prev)}
+            onClick={() => setIsRightSideNavVisible(!isRightSideNavVisible)}
             cursor={"pointer"}
           >
             {isRightSideNavVisible ? <MdKeyboardDoubleArrowRight /> : <MdKeyboardDoubleArrowLeft />}

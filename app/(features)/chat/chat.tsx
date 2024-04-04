@@ -62,8 +62,8 @@ export default function Chat() {
         </GridItem>
         <GridItem bg="white" area={"textInput"}>
           <TextInput
-            setIsLeftSideNavVisible={setIsLeftSideNavVisible}
             isLeftSideNavVisible={isLeftSideNavVisible}
+            setIsLeftSideNavVisible={setIsLeftSideNavVisible}
             isRightSideNavVisible={isRightSideNavVisible}
             setIsRightSideNavVisible={setIsRightSideNavVisible}
           />
