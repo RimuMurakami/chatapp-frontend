@@ -10,6 +10,17 @@ import { NewTask } from "./right-sidenav/NewTask";
 import { useAuth } from "@/app/hooks/auth";
 import { TaskCompleteToast } from "./right-sidenav/TaskCompleteToast";
 
+// task
+type Task = {
+  id: number;
+  task: string;
+  user: {
+    id: number;
+    name: string;
+  };
+};
+export type Tasks = Task[];
+
 export function RightSideNav() {
   const channels = useChannels();
   const { id: channel_id } = useParams();
@@ -34,7 +45,7 @@ export function RightSideNav() {
     setToggleOverview(false);
   }
 
-  const overviewRef = useRef<HTMLTextAreaElement>();
+  const overviewRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
     toggleOverview
       ? setTimeout(() => {
@@ -49,17 +60,6 @@ export function RightSideNav() {
   }, [channel?.overview]);
 
   const rows = overview?.split("\n").length;
-
-  // task
-  type Task = {
-    id: number;
-    task: string;
-    user: {
-      id: number;
-      name: string;
-    };
-  };
-  type Tasks = Task[];
 
   const [toggleCreateTask, setToggleCreateTask] = useState(false);
   const [tasks, setTasks] = useState<Tasks>([]);
@@ -92,13 +92,15 @@ export function RightSideNav() {
 
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"} overflowY={"scroll"}>
+      {/* overview */}
       <Box>
         <HStack p={1} h={"12"} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
           <Text>概要</Text>
           <Button
             p={0}
             onClick={() => {
-              setToggleOverview(true);
+              setToggleOverview(!toggleOverview);
+              setTempOverview(overview);
             }}
           >
             <LuPencilLine size="24px" />
@@ -106,7 +108,7 @@ export function RightSideNav() {
         </HStack>
         <Box pt={4}>
           {toggleOverview ? (
-            // 編集中
+            // 編集
             <>
               <Textarea
                 bgColor={"white"}
@@ -135,8 +137,7 @@ export function RightSideNav() {
               </HStack>
             </>
           ) : (
-            // 通常時
-            // <Text pl={2}>{overview}</Text>
+            // 閲覧
             <Text pl={2}>
               {overview?.split("\n").map((line, i) => (
                 <span key={i}>
@@ -148,6 +149,7 @@ export function RightSideNav() {
           )}
         </Box>
       </Box>
+      {/* tasks */}
       <Box>
         <HStack p={1} mt={8} h={12} justify={"space-between"} borderTop={"1px solid"} borderColor={"gray.300"}>
           <Text>タスク</Text>
