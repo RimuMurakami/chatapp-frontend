@@ -11,10 +11,10 @@ export function Websockets() {
     window.Pusher = Pusher;
 
     window.Echo = new Echo({
-      broadcaster: process.env.BROADCASTER,
-      key: process.env.PUSHER_KEY,
-      cluster: process.env.PUSHER_CLUSTER,
-      forceTLS: process.env.PUSHER_FORCETLS,
+      broadcaster: process.env.NEXT_PUBLIC_BROADCASTER,
+      key: process.env.NEXT_PUBLIC_PUSHER_KEY,
+      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
+      forceTLS: process.env.NEXT_PUBLIC_PUSHER_FORCETLS,
     });
 
     const channel = window.Echo.channel("my-channel");
@@ -27,7 +27,7 @@ export function Websockets() {
     return () => {
       window.Echo.leaveChannel("my-channel");
     };
-  }, []);
+  }, [dispatch]);
 
   return <></>;
 }

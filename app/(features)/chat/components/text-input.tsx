@@ -18,10 +18,10 @@ import { useState } from "react";
 import { useDispatchMessages } from "../contexts/message-context";
 import { StampMenu } from "./text-input/stamp-menu";
 import { FileInput } from "./text-input/file-input";
-import { useChat } from "../contexts/chat-context";
 import { useParams } from "next/navigation";
 import axios from "@/app/lib/axios";
 import { Websockets } from "../lib/websockets";
+import { useAuth } from "@/app/hooks/auth";
 
 export function TextInput({
   setIsLeftSideNavVisible,
@@ -34,7 +34,8 @@ export function TextInput({
   const dispatch = useDispatchMessages();
   const [enteredMessage, setEnteredMessage] = useState("");
 
-  const { user } = useChat();
+  // const { user } = useChat();
+  const { user } = useAuth();
   const user_id = user?.id;
 
   const { id: channel_id } = useParams();

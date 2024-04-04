@@ -10,6 +10,7 @@ import {
   Link,
   useToast,
   FormErrorMessage,
+  Spacer,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/hooks/auth";
@@ -37,7 +38,7 @@ const Login = () => {
     } else {
       setStatus(null);
     }
-  });
+  }, [status, router.reset, errors.length]);
 
   const submitForm = async (event) => {
     event.preventDefault();
@@ -53,7 +54,7 @@ const Login = () => {
 
   return (
     <>
-      <AuthSessionStatus className="mb-4" status={status} />
+      {/* <AuthSessionStatus status={status} /> */}
       <Box as="form" onSubmit={submitForm}>
         <FormControl id="email">
           <FormLabel>Email</FormLabel>
@@ -73,7 +74,13 @@ const Login = () => {
 
         <Box display="flex" justifyContent="space-between" alignItems="center" mt={4}>
           <Link href="/forgot-password">Forgot your password?</Link>
-          <Button type="submit">Login</Button>
+          <Spacer />
+          <Link href="/register" mr={3}>
+            Register
+          </Link>
+          <Button type="submit" colorScheme="blue">
+            Login
+          </Button>
         </Box>
       </Box>
     </>

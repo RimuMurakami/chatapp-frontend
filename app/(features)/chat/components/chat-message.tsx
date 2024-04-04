@@ -10,7 +10,7 @@ import { useAuth } from "@/app/hooks/auth";
 import { MessageMenu } from "./chat-message/message-menu";
 import { EditMessage } from "./chat-message/edit-message";
 
-function formatDate(timestamp) {
+function formatDate(timestamp: string): string {
   let date = new Date(timestamp);
   let formattedDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
   let formattedTime = date.getHours() + "時" + date.getMinutes() + "分";
