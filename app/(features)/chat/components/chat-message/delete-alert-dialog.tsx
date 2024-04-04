@@ -12,10 +12,16 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useRef } from "react";
+import { Message } from "../../contexts/message-context";
 
-export function DeleteAlertDialog({ handleDelete, message }) {
+type DeleteAlertDialogProps = {
+  message: Message;
+  handleDelete(message: { id: number }): void;
+};
+
+export function DeleteAlertDialog({ handleDelete, message }: DeleteAlertDialogProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = useRef();
+  const cancelRef = useRef<HTMLButtonElement>(null);
 
   return (
     <>

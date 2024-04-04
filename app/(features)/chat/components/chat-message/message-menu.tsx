@@ -1,9 +1,16 @@
 import { AiOutlineMore } from "react-icons/ai";
-import { Menu, MenuList, MenuItem, MenuButton, Button, Box } from "@chakra-ui/react";
+import { Menu, MenuList, MenuItem, MenuButton } from "@chakra-ui/react";
 import { DeleteAlertDialog } from "./delete-alert-dialog";
 import { useAuth } from "@/app/hooks/auth";
+import { Message } from "../../contexts/message-context";
 
-const MessageMenu = ({ message, handleDelete, setEditToggle }) => {
+type MessageMenuProps = {
+  message: Message;
+  handleDelete(message: { id: number }): void;
+  setEditToggle(id: number): void;
+};
+
+const MessageMenu = ({ message, handleDelete, setEditToggle }: MessageMenuProps) => {
   const { user } = useAuth();
   return (
     <Menu closeOnSelect={true}>
@@ -15,7 +22,6 @@ const MessageMenu = ({ message, handleDelete, setEditToggle }) => {
           <>
             <MenuItem onClick={() => setEditToggle(message.id)}>編集</MenuItem>
             <DeleteAlertDialog handleDelete={handleDelete} message={message} />
-            {/* <MenuItem onClick={() => handleDelete(message)}>削除</MenuItem> */}
           </>
         ) : (
           <MenuItem>返信(未実装)</MenuItem>

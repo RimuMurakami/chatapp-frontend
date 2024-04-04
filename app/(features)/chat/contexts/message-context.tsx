@@ -8,7 +8,7 @@ import { Dispatch, createContext, useContext, useEffect, useReducer } from "reac
 const MessageContext = createContext<Message[]>([]);
 const MessageDispatchContext = createContext<Dispatch<MessageAction> | null>(null);
 
-type Message = {
+export type Message = {
   channel: {
     name: string;
   };
@@ -19,6 +19,7 @@ type Message = {
   created_at: string;
   type: string;
   message: string;
+  user_id: number;
 };
 
 type MessageAction =
