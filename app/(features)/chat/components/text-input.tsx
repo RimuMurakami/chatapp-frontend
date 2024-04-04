@@ -46,7 +46,7 @@ export function TextInput({
 
   const { id: channel_id } = useParams();
 
-  function sendMessage(e: React.FormEvent) {
+  function sendMessage(e: React.FormEvent | React.KeyboardEvent): void {
     e.preventDefault();
     if (!enteredMessage) {
       return;
@@ -135,7 +135,7 @@ export function TextInput({
         </GridItem>
         {/* input message */}
         <GridItem area={"textInput"}>
-          <FormControl h={"100%"} onSubmit={sendMessage}>
+          <FormControl h={"100%"}>
             <Flex h={"100%"} direction={"column"}>
               <Textarea
                 border="1px"

@@ -11,7 +11,7 @@ export function LeftSideNav() {
   const channels = useChannels();
 
   let { id: channel_id } = useParams();
-  const paramId = channel_id ?? 0;
+  const paramId = Number(channel_id ?? 0);
 
   const bgColor = useColorModeValue("blue.100", "blue.800");
   const hoverColor = useColorModeValue("blue.200", "blue.600");
@@ -46,9 +46,8 @@ export function LeftSideNav() {
                   <Link
                     href={`/chat/${channel.id}`}
                     _hover={{ textDecoration: "none", bg: hoverColor }}
-                    bg={paramId == channel.id ? bgColor : "null"}
-                    border={paramId == channel.channel_id ? "2px solid" : "null"}
-                    // border={"2px solid"}
+                    bg={paramId == channel.id ? bgColor : ""}
+                    border={paramId == channel.id ? "2px solid" : ""}
                     borderColor={paramId == channel.id ? "blue.200" : "transparent"}
                     rounded={"md"}
                   >

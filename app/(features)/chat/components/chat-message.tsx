@@ -23,7 +23,7 @@ export function ChatMessage() {
   const messages = useMessages();
   const channel = messages[0]?.channel;
 
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
   }, [messages]);
@@ -32,11 +32,11 @@ export function ChatMessage() {
 
   const [editToggle, setEditToggle] = useState(null);
 
-  function handleDelete(message) {
+  function handleDelete(message: { id: number }) {
     const deleteMessage = async () => {
       try {
         const response = await axios.delete(`api/messages/${message.id}`);
-        dispatch({ type: "message/delete", id: response.data.id });
+        dispatch ? dispatch({ type: "message/delete", id: response.data.id }) : "";
       } catch (error) {
         console.error(error);
       }

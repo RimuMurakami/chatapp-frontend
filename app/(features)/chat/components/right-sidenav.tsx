@@ -13,7 +13,7 @@ import { TaskCompleteToast } from "./right-sidenav/TaskCompleteToast";
 export function RightSideNav() {
   const channels = useChannels();
   const { id: channel_id } = useParams();
-  const channel = channels?.find((channel) => channel.id == channel_id);
+  const channel = channels?.find((channel) => channel.id == Number(channel_id));
 
   const [overview, setOverview] = useState(channel?.overview);
   const [tempOverview, setTempOverview] = useState(channel?.overview);
@@ -34,7 +34,7 @@ export function RightSideNav() {
     setToggleOverview(false);
   }
 
-  const overviewRef = useRef(null);
+  const overviewRef = useRef<HTMLTextAreaElement>();
   useEffect(() => {
     toggleOverview
       ? setTimeout(() => {
@@ -50,8 +50,19 @@ export function RightSideNav() {
 
   const rows = overview?.split("\n").length;
 
+  // task
+  type Task = {
+    id: number;
+    task: string;
+    user: {
+      id: number;
+      name: string;
+    };
+  };
+  type Tasks = Task[];
+
   const [toggleCreateTask, setToggleCreateTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Tasks>([]);
 
   useEffect(() => {
     axios
@@ -67,7 +78,7 @@ export function RightSideNav() {
 
   const { user } = useAuth();
 
-  function handleComplete(task_id) {
+  function handleComplete(task_id: number) {
     axios
       .delete(`api/tasks/${task_id}`)
       .then((res) => {
