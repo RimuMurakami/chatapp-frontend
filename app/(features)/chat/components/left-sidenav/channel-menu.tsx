@@ -7,7 +7,18 @@ import { useDispatchChannels } from "../../contexts/channel-context";
 import { EditChannel } from "./edit-channel";
 import { useParams, useRouter } from "next/navigation";
 
-const ChannelMenu = ({ channel_id, channel_users, channel_name }) => {
+type ChannelMenuProps = {
+  channel_id: number;
+  channel_users: {
+    id: number;
+    pivot: {
+      role: string;
+    };
+  }[];
+  channel_name: string;
+};
+
+const ChannelMenu = ({ channel_id, channel_users, channel_name }: ChannelMenuProps) => {
   const { user } = useAuth();
   const dispatch = useDispatchChannels();
 
@@ -15,15 +26,16 @@ const ChannelMenu = ({ channel_id, channel_users, channel_name }) => {
     (channel_user) => channel_user.id === user.id && channel_user.pivot.role === "owner"
   );
 
-  const { id: params_id } = useParams();
+  const { id } = useParams();
+  const params_id = Number(id);
   const router = useRouter();
 
-  function handleDelete(channel_id) {
+  function handleDelete(channel_id: number): void {
     axios
       .delete(`api/channels/${channel_id}`)
       .then((res) => {
         console.log(res.data);
-        dispatch({ type: "channel/delete", id: res.data.id });
+        dispatch ? dispatch({ type: "channel/delete", id: res.data.id }) : "";
         if (params_id == channel_id) {
           router.push(`/chat`);
         }

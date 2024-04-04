@@ -4,9 +4,13 @@ Laravel と Nextjs の技術習得のため、チャットアプリを個人開�
 
 <img width="1279" alt="chat-app-img" src="https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/d371f38d-b85c-4053-86e0-48979c1787ea">
 
+<br><br>
 
-<br><br><br><br>
-### アプリのデモ動画URL(ファイル容量大のため、ローカルにて再生可能)
+![chatapp](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/e67942c0-8a0b-4a53-8940-0da451c1af3a)
+
+<br><br>
+
+### アプリのデモ動画 URL(ファイル容量大のため、ローカルにて再生可能)
 
 https://github.com/RimuMurakami/chatapp-frontend/blob/main/ChatApp-DemoMovie-Github%E7%94%A8.mp4
 
@@ -15,6 +19,7 @@ Backend API Server の URL
 <br>
 https://github.com/RimuMurakami/chatapp-backend
 <br><br>
+
 - 現状は実務運用には耐えられない(下記が未実装)
   - 認可ロジック
   - リクエストのバリデーション
@@ -23,17 +28,16 @@ https://github.com/RimuMurakami/chatapp-backend
   <hr>
 - 今後の予定
   - 上記の実装
-  - フロントエンドコードの Typescript によるリファクタリング
+  - フロントエンドコードの Typescript によるリファクタリング (refactoring-to-TypeScript ブランチにて実施中)
 
 ## 動作確認に必要な外部 API 等
 
 - GoogleAuth
 - Pusher
 
-## ER図
+## ER 図
 
 ![chat-app-ER](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/28887a64-9c9a-495f-8c76-b1f2a5726c3b)
-
 
 <br><br><br><br><br><hr>
 

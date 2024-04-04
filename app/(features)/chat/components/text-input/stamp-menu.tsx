@@ -22,6 +22,7 @@ import {
 import { useAuth } from "@/app/hooks/auth";
 import { useParams } from "next/navigation";
 import axios from "@/app/lib/axios";
+import React from "react";
 
 export function StampMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,12 +36,13 @@ export function StampMenu() {
   const { user } = useAuth();
   const { id: channel_id } = useParams();
 
-  const dispatch = useDispatchMessages();
-  const handleStamp = (e) => {
+  // const dispatch = useDispatchMessages();
+  const handleStamp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const targetSrc = e.target as HTMLImageElement;
     const newStamp = {
       channel_id: channel_id,
       user_id: user?.id,
-      message: e.target.src,
+      message: targetSrc.src,
       type: "stamp",
     };
 

@@ -18,12 +18,12 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-import { useChat } from "../../contexts/chat-context";
 import { useEffect, useState } from "react";
 import axios from "@/app/lib/axios";
+import { useAuth } from "@/app/hooks/auth";
 
 export function EditProfile() {
-  const { user } = useChat();
+  const { user } = useAuth();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 

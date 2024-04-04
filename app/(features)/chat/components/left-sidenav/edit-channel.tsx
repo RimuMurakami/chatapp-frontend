@@ -16,13 +16,17 @@ import {
 
 import { useEffect, useRef, useState } from "react";
 import axios from "@/app/lib/axios";
-import { useParams } from "next/navigation";
 import { useDispatchChannels } from "../../contexts/channel-context";
 
-export function EditChannel({ channel_name, channel_id }) {
+type EditChannelProps = {
+  channel_name: string;
+  channel_id: number;
+};
+
+export function EditChannel({ channel_name, channel_id }: EditChannelProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [channelName, setChannelName] = useState(channel_name);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useDispatchChannels();
 
@@ -33,8 +37,8 @@ export function EditChannel({ channel_name, channel_id }) {
     axios
       .put(`api/channels/${channel_id}`, updateChannelName)
       .then((res) => {
-        console.log(res.data);
-        dispatch({ type: "channel/update", channel: res.data });
+        // console.log(res.data);
+        dispatch ? dispatch({ type: "channel/update", channel: res.data }) : "";
         onClose();
       })
       .catch((err) => {
@@ -49,7 +53,7 @@ export function EditChannel({ channel_name, channel_id }) {
   useEffect(() => {
     inputRef.current?.focus();
     setChannelName(channel_name);
-  }, [isOpen]);
+  }, [isOpen, channel_name]);
 
   return (
     <>

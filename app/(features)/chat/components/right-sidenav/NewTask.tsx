@@ -2,13 +2,21 @@ import { useAuth } from "@/app/hooks/auth";
 import axios from "@/app/lib/axios";
 import { Box, Button, HStack, Input } from "@chakra-ui/react";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Tasks } from "../right-sidenav";
 
-export function NewTask({ setToggleCreateTask, tasks, setTasks }) {
+type NewTaskProps = {
+  setToggleCreateTask: (bool: boolean) => void;
+  tasks: Tasks;
+  setTasks: (tasks: Tasks) => void;
+};
+
+export function NewTask({ setToggleCreateTask, tasks, setTasks }: NewTaskProps) {
   const [task, setTask] = useState("");
 
   const { user } = useAuth();
-  const { id: channel_id } = useParams();
+  const { id } = useParams();
+  const channel_id = Number(id);
 
   function handleCancel() {
     setTask("");
@@ -17,11 +25,10 @@ export function NewTask({ setToggleCreateTask, tasks, setTasks }) {
 
   function handleCreate() {
     const newTask = {
-      channel_id: parseInt(channel_id),
+      channel_id: channel_id,
       user_id: user?.id,
       task: task,
     };
-    // console.log(newTask);
 
     axios
       .post("api/tasks", newTask)

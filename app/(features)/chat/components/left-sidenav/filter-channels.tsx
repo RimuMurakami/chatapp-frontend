@@ -12,6 +12,7 @@ export function FilterChannels() {
         </HStack>
       </MenuButton>
       <MenuList>
+        <MenuItem>未実装↓↓</MenuItem>
         <MenuItem>チャンネル一覧</MenuItem>
         <MenuItem>チャンネル一覧</MenuItem>
         <MenuItem>フィルタ等</MenuItem>

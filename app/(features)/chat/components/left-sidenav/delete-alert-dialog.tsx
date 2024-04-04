@@ -11,9 +11,14 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 
-export function DeleteAlertDialog({ handleDelete, channel_id }) {
+type DeleteAlertDialogProps = {
+  handleDelete(channel_id: number): void;
+  channel_id: number;
+};
+
+export function DeleteAlertDialog({ handleDelete, channel_id }: DeleteAlertDialogProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = useRef();
+  const cancelRef = useRef<HTMLButtonElement>(null);
 
   return (
     <>

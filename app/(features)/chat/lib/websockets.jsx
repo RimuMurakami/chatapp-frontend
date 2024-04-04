@@ -27,7 +27,7 @@ export function Websockets() {
     return () => {
       window.Echo.leaveChannel("my-channel");
     };
-  }, []);
+  }, [dispatch]);
 
   return <></>;
 }

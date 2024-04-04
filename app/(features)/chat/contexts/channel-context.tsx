@@ -1,14 +1,33 @@
 "use client";
 
-import { useAuth } from "@/app/hooks/auth";
 import axios from "@/app/lib/axios";
-import { useParams } from "next/navigation";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { Dispatch, createContext, useContext, useEffect, useReducer } from "react";
 
-const ChannelContext = createContext(null);
-const ChannelDispatchContext = createContext(null);
+const ChannelContext = createContext<Channels>([]);
+const ChannelDispatchContext = createContext<Dispatch<ChannelAction> | null>(null);
 
-const channelReducer = (channels, action) => {
+type Channel = {
+  id: number;
+  name: string;
+  overview: string;
+  users: {
+    id: number;
+    name: string;
+    pivot: {
+      role: string;
+    };
+  }[];
+};
+
+type Channels = Channel[];
+
+type ChannelAction =
+  | { type: "channel/init"; channels: Channel[] }
+  | { type: "channel/add"; channel: Channel }
+  | { type: "channel/update"; channel: Channel }
+  | { type: "channel/delete"; id: number };
+
+const channelReducer = (channels: Channels, action: ChannelAction) => {
   switch (action.type) {
     case "channel/init":
       return [...action.channels];
@@ -27,7 +46,7 @@ const channelReducer = (channels, action) => {
   }
 };
 
-const ChannelProvider = ({ children }) => {
+const ChannelProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(channelReducer, []);
 
   useEffect(() => {

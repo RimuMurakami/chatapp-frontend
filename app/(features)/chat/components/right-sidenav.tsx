@@ -10,10 +10,21 @@ import { NewTask } from "./right-sidenav/NewTask";
 import { useAuth } from "@/app/hooks/auth";
 import { TaskCompleteToast } from "./right-sidenav/TaskCompleteToast";
 
+// task
+type Task = {
+  id: number;
+  task: string;
+  user: {
+    id: number;
+    name: string;
+  };
+};
+export type Tasks = Task[];
+
 export function RightSideNav() {
   const channels = useChannels();
   const { id: channel_id } = useParams();
-  const channel = channels?.find((channel) => channel.id == channel_id);
+  const channel = channels?.find((channel) => channel.id == Number(channel_id));
 
   const [overview, setOverview] = useState(channel?.overview);
   const [tempOverview, setTempOverview] = useState(channel?.overview);
@@ -34,7 +45,7 @@ export function RightSideNav() {
     setToggleOverview(false);
   }
 
-  const overviewRef = useRef(null);
+  const overviewRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
     toggleOverview
       ? setTimeout(() => {
@@ -51,7 +62,7 @@ export function RightSideNav() {
   const rows = overview?.split("\n").length;
 
   const [toggleCreateTask, setToggleCreateTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Tasks>([]);
 
   useEffect(() => {
     axios
@@ -67,7 +78,7 @@ export function RightSideNav() {
 
   const { user } = useAuth();
 
-  function handleComplete(task_id) {
+  function handleComplete(task_id: number) {
     axios
       .delete(`api/tasks/${task_id}`)
       .then((res) => {
@@ -81,13 +92,15 @@ export function RightSideNav() {
 
   return (
     <Box m={1} maxH={"calc(100dvh - 40px)"} overflowY={"scroll"}>
+      {/* overview */}
       <Box>
         <HStack p={1} h={"12"} justify={"space-between"} borderBottom={"1px solid"} borderColor={"gray.400"}>
           <Text>概要</Text>
           <Button
             p={0}
             onClick={() => {
-              setToggleOverview(true);
+              setToggleOverview(!toggleOverview);
+              setTempOverview(overview);
             }}
           >
             <LuPencilLine size="24px" />
@@ -95,7 +108,7 @@ export function RightSideNav() {
         </HStack>
         <Box pt={4}>
           {toggleOverview ? (
-            // 編集中
+            // 編集
             <>
               <Textarea
                 bgColor={"white"}
@@ -124,8 +137,7 @@ export function RightSideNav() {
               </HStack>
             </>
           ) : (
-            // 通常時
-            // <Text pl={2}>{overview}</Text>
+            // 閲覧
             <Text pl={2}>
               {overview?.split("\n").map((line, i) => (
                 <span key={i}>
@@ -137,6 +149,7 @@ export function RightSideNav() {
           )}
         </Box>
       </Box>
+      {/* tasks */}
       <Box>
         <HStack p={1} mt={8} h={12} justify={"space-between"} borderTop={"1px solid"} borderColor={"gray.300"}>
           <Text>タスク</Text>

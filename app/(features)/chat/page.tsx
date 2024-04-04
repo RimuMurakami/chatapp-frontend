@@ -1,5 +1,3 @@
 "use client";
 
-export default function ChatApp() {
-  return <></>;
-}
+export default function ChatApp() {}

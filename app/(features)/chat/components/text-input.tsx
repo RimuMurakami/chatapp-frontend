@@ -18,28 +18,35 @@ import { useState } from "react";
 import { useDispatchMessages } from "../contexts/message-context";
 import { StampMenu } from "./text-input/stamp-menu";
 import { FileInput } from "./text-input/file-input";
-import { useChat } from "../contexts/chat-context";
 import { useParams } from "next/navigation";
 import axios from "@/app/lib/axios";
 import { Websockets } from "../lib/websockets";
+import { useAuth } from "@/app/hooks/auth";
+
+type TextInputProps = {
+  isLeftSideNavVisible: boolean;
+  setIsLeftSideNavVisible: (value: boolean) => void;
+  isRightSideNavVisible: boolean;
+  setIsRightSideNavVisible: (value: boolean) => void;
+};
 
 export function TextInput({
-  setIsLeftSideNavVisible,
   isLeftSideNavVisible,
+  setIsLeftSideNavVisible,
   isRightSideNavVisible,
   setIsRightSideNavVisible,
-}) {
+}: TextInputProps) {
   const [isEnterToSend, setIsEnterToSend] = useState(false);
 
   const dispatch = useDispatchMessages();
   const [enteredMessage, setEnteredMessage] = useState("");
 
-  const { user } = useChat();
+  const { user } = useAuth();
   const user_id = user?.id;
 
   const { id: channel_id } = useParams();
 
-  function sendMessage(e: React.FormEvent) {
+  function sendMessage(e: React.FormEvent | React.KeyboardEvent): void {
     e.preventDefault();
     if (!enteredMessage) {
       return;
@@ -91,7 +98,7 @@ export function TextInput({
             h={"100%"}
             align={"center"}
             _hover={{ bgColor: "blue.50" }}
-            onClick={() => setIsLeftSideNavVisible((prev) => !prev)}
+            onClick={() => setIsLeftSideNavVisible(!isLeftSideNavVisible)}
             cursor={"pointer"}
           >
             {isLeftSideNavVisible ? <MdKeyboardDoubleArrowLeft /> : <MdKeyboardDoubleArrowRight />}
@@ -102,7 +109,7 @@ export function TextInput({
           <HStack h={"100%"} align={"center"}>
             <HStack gap={3}>
               <StampMenu />
-              <FileInput />
+              {/* <FileInput /> */}
               {/* <CiVideoOn size={"28px"} /> */}
             </HStack>
             <Spacer />
@@ -120,7 +127,7 @@ export function TextInput({
             h={"100%"}
             align={"center"}
             _hover={{ bgColor: "blue.50" }}
-            onClick={() => setIsRightSideNavVisible((prev) => !prev)}
+            onClick={() => setIsRightSideNavVisible(!isRightSideNavVisible)}
             cursor={"pointer"}
           >
             {isRightSideNavVisible ? <MdKeyboardDoubleArrowRight /> : <MdKeyboardDoubleArrowLeft />}
@@ -128,7 +135,7 @@ export function TextInput({
         </GridItem>
         {/* input message */}
         <GridItem area={"textInput"}>
-          <FormControl h={"100%"} onSubmit={sendMessage}>
+          <FormControl h={"100%"}>
             <Flex h={"100%"} direction={"column"}>
               <Textarea
                 border="1px"
