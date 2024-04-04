@@ -4,7 +4,11 @@ Laravel と Nextjs の技術習得のため、チャットアプリを個人開�
 
 <img width="1279" alt="chat-app-img" src="https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/d371f38d-b85c-4053-86e0-48979c1787ea">
 
-<br><br><br><br>
+<br><br>
+
+![chatapp](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/e67942c0-8a0b-4a53-8940-0da451c1af3a)
+
+<br><br>
 
 ### アプリのデモ動画 URL(ファイル容量大のため、ローカルにて再生可能)
 
