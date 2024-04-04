@@ -6,29 +6,26 @@ Laravel と Nextjs の技術習得のため、チャットアプリを個人開�
 
 <br><br>
 
-![chatapp](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/e67942c0-8a0b-4a53-8940-0da451c1af3a)
+![chatapp](https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/e796e909-e3df-464e-964c-fa5097554128)
 
 <br><br>
 
 ### アプリのデモ動画 URL(ファイル容量大のため、ローカルにて再生可能)
 
-https://github.com/RimuMurakami/chatapp-frontend/blob/main/ChatApp-DemoMovie-Github%E7%94%A8.mp4
+https://github.com/RimuMurakami/chatapp-frontend/blob/main/ChatApp-demo.mp4
 
-<br><br><br><br>
-Backend API Server の URL
-<br>
+<br><br>
+### Backend API Server の URL
+
 https://github.com/RimuMurakami/chatapp-backend
 <br><br>
 
-- 現状は実務運用には耐えられない(下記が未実装)
+- 今後の実装予定機能
+  - <s>フロントエンドコードのTypescript対応 (refactoring-to-TypeScript ブランチにて実施中)</s> 2024/04/04 Auth以外に対応
   - 認可ロジック
   - リクエストのバリデーション
   - メールサーバー
   - エラーハンドリング等
-  <hr>
-- 今後の予定
-  - 上記の実装
-  - フロントエンドコードの Typescript によるリファクタリング (refactoring-to-TypeScript ブランチにて実施中)
 
 ## 動作確認に必要な外部 API 等
 
