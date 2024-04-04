@@ -3,12 +3,31 @@
 import axios from "@/app/lib/axios";
 import { useParams } from "next/navigation";
 
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { Dispatch, createContext, useContext, useEffect, useReducer } from "react";
 
-const MessageContext = createContext(null);
-const MessageDispatchContext = createContext(null);
+const MessageContext = createContext<Message[]>([]);
+const MessageDispatchContext = createContext<Dispatch<MessageAction> | null>(null);
 
-const messageReducer = (messages, action) => {
+type Message = {
+  channel: {
+    name: string;
+  };
+  id: number;
+  user: {
+    name: string;
+  };
+  created_at: string;
+  type: string;
+  message: string;
+};
+
+type MessageAction =
+  | { type: "message/init"; messages: Message[] }
+  | { type: "message/add"; message: Message }
+  | { type: "message/update"; message: Message }
+  | { type: "message/delete"; id: number };
+
+const messageReducer = (messages: Message[], action: MessageAction) => {
   switch (action.type) {
     case "message/init":
       return [...action.messages];
@@ -27,8 +46,8 @@ const messageReducer = (messages, action) => {
   }
 };
 
-const MessageProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(messageReducer, "");
+const MessageProvider = ({ children }: { children: React.ReactNode }) => {
+  const [state, dispatch] = useReducer(messageReducer, []);
 
   const { id: channel_id } = useParams();
 
