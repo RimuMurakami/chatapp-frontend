@@ -109,7 +109,7 @@ export function TextInput({
           <HStack h={"100%"} align={"center"}>
             <HStack gap={3}>
               <StampMenu />
-              <FileInput />
+              {/* <FileInput /> */}
               {/* <CiVideoOn size={"28px"} /> */}
             </HStack>
             <Spacer />
