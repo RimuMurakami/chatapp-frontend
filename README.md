@@ -12,7 +12,7 @@ Laravel と Nextjs の技術習得のため、チャットアプリを個人開�
 
 ### アプリのデモ動画 URL(ファイル容量大のため、ローカルにて再生可能)
 
-https://github.com/RimuMurakami/chatapp-frontend/blob/main/ChatApp-demo.mp4
+https://github.com/RimuMurakami/chatapp-frontend/blob/main/chatapp_demo.mp4
 
 <br><br>
 ### Backend API Server の URL
