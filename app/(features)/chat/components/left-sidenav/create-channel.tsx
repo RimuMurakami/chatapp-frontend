@@ -22,8 +22,15 @@ import axios from "@/app/lib/axios";
 import { useAuth } from "@/app/hooks/auth";
 import { useRouter } from "next/navigation";
 
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
 export function CreateChannel() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
+
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await axios.get("api/users");
@@ -33,14 +40,14 @@ export function CreateChannel() {
   }, []);
 
   const { user } = useAuth();
-  const myUserId = user?.id;
+  const myUserId = Number(user?.id);
 
   const { isOpen, onOpen, onClose: close } = useDisclosure();
 
   const [channelName, setChannelName] = useState("");
   const [channelOverview, setChannelOverview] = useState("");
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -64,7 +71,7 @@ export function CreateChannel() {
     const fetchChannel = async () => {
       try {
         const response = await axios.post(`api/channels`, newChannel);
-        dispatch({ type: "channel/add", channel: response.data });
+        dispatch ? dispatch({ type: "channel/add", channel: response.data }) : "";
         setChannelName("");
         setChannelOverview("");
         onClose();
@@ -77,15 +84,15 @@ export function CreateChannel() {
     fetchChannel();
   };
 
-  const [selectedUserIds, setSelectedUserIds] = useState([]);
-  function handleUserClick(user_id) {
+  const [selectedUserIds, setSelectedUserIds] = useState<number[]>([]);
+  function handleUserClick(userId: number) {
     setSelectedUserIds((prev) => {
-      if (prev.includes(user_id)) {
+      if (prev.includes(userId)) {
         // user.idがすでに存在する場合、それを取り除く
-        return prev.filter((id) => id !== user_id);
+        return prev.filter((id) => id !== userId);
       } else {
         // user.idが存在しない場合、それを追加する
-        return [...prev, user_id];
+        return [...prev, userId];
       }
     });
   }
@@ -141,7 +148,7 @@ export function CreateChannel() {
                         gap={6}
                         borderBottom={"1px solid"}
                         borderColor={"gray.200"}
-                        bg={selectedUserIds.includes(user.id) ? "blue.100" : null}
+                        bg={selectedUserIds.includes(user.id) ? "blue.100" : ""}
                         onClick={() => handleUserClick(user.id)}
                       >
                         <Avatar size={"sm"} name={user.name} />

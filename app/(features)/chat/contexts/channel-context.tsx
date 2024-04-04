@@ -13,6 +13,9 @@ type Channel = {
   users: {
     id: number;
     name: string;
+    pivot: {
+      role: string;
+    };
   }[];
 };
 

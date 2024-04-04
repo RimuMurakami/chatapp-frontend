@@ -1,4 +1,4 @@
-import { Menu, MenuList, MenuItem, MenuButton, Button, Box } from "@chakra-ui/react";
+import { Menu, MenuList, MenuItem, MenuButton, Button } from "@chakra-ui/react";
 import { CreateChannel } from "./create-channel";
 import { AddUser } from "./add-user";
 
