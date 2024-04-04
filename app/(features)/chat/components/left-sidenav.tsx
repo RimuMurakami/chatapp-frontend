@@ -36,7 +36,7 @@ export function LeftSideNav() {
           sx={{
             "&::-webkit-scrollbar": { display: "none" }, // Chrome, Safari用
             scrollbarWidth: "none", // Firefox用
-            "-ms-overflow-style": "none", // IE、Edge用
+            msOverflowStyle: "none", // IE、Edge用
           }}
         >
           {channels?.length > 0 ? (
