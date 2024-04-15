@@ -1,6 +1,6 @@
 # Chat App (Frontend)
 
-Laravel と Nextjs の技術習得のため、チャットアプリを個人開発しています。
+Laravel と Nextjsを技術スタックに添えたチャットアプリです。
 
 <img width="1279" alt="chat-app-img" src="https://github.com/RimuMurakami/chatapp-frontend/assets/118171336/d371f38d-b85c-4053-86e0-48979c1787ea">
 
